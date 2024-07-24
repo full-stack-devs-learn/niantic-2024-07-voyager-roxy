@@ -257,7 +257,6 @@ public class Main
         System.out.println();
 
 
-
         // 14. In his previous basketball game Pete took 20 shots.
         // He missed 6 shots, and he made 3 three point shots.
 
@@ -289,7 +288,6 @@ public class Main
         System.out.println();
 
 
-
         // 16. Pete has made 13 shots, Pat has made 9.
         // If both Pete and Pat make 1 more shot each
         // before the game ends, how many total shots
@@ -306,7 +304,6 @@ public class Main
         System.out.println("16. Total Shots by Terrifying Twosome");
         System.out.println("totalTwosomeShots:  " + totalTwosomeShots);
         System.out.println();
-
 
 
         // 17. In his last game Pete made 11 shots.
@@ -346,8 +343,7 @@ public class Main
         System.out.println("shotsNeeded: " + shotsNeeded);
         System.out.println();
 
-
-
+        
     }
     
     public static void clairesCookies()
