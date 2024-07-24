@@ -295,11 +295,11 @@ public class Main
 
         int peteMadeShots = 13;
         int patMadeShots = 9;
+        
+        peteMadeShots++;
+        patMadeShots++;
 
-        int peteAdditionalShot = 1;
-        int patAdditionalShot = 1;
-
-        int totalTwosomeShots = peteMadeShots + peteAdditionalShot + patMadeShots + patAdditionalShot ;
+        int totalTwosomeShots = peteMadeShots + patMadeShots  ;
 
         System.out.println("16. Total Shots by Terrifying Twosome");
         System.out.println("totalTwosomeShots:  " + totalTwosomeShots);
@@ -343,7 +343,7 @@ public class Main
         System.out.println("shotsNeeded: " + shotsNeeded);
         System.out.println();
 
-        
+
     }
     
     public static void clairesCookies()
