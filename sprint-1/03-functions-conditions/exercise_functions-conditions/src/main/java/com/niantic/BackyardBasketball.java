@@ -24,7 +24,12 @@ public class BackyardBasketball
      */
     public int calculateWinningPercentage(int gamesWon, int gamesLost)
     {
-        return 0;
+
+        int totalGames = gamesLost + gamesWon;
+        double percentage = (double)gamesWon / totalGames;
+        double wholePercentage = percentage * 100;
+
+        return (int) wholePercentage;
     }
 
 
@@ -43,7 +48,20 @@ public class BackyardBasketball
      */
     public int calculatePointsScored(int shotPercentage, int shotsTaken, boolean isThree)
     {
-        return 0;
+        double shotPercentageDecimal = (double)shotPercentage / 100;
+        double shotsMade = shotPercentageDecimal * shotsTaken;
+
+        if(isThree) {
+            shotsMade *= 3;
+        }
+        else
+        {
+            shotsMade *= 2;
+        }
+        System.out.println("Shots made: " + shotsMade);
+
+        return (int) shotsMade;
+
     }
 
 
@@ -67,8 +85,26 @@ public class BackyardBasketball
      * calculateShotsRequired(67, 24, false) -> 18     *
      *
      */
-    public int calculateShotsRequired(int shotPercentage, int desiredScore, boolean isThree)
-    {
-        return 0;
+    public int calculateShotsRequired(int shotPercentage, int desiredScore, boolean isThree) {
+
+        int twoPointer = 2;
+        int threePointer = 3;
+        double shotsRequired = 0;
+
+
+        if (isThree) {
+            int shotsMade = (int) Math.ceil((double) desiredScore / threePointer);
+            double decimalPercent = (double) shotPercentage / 100;
+
+            shotsRequired = Math.ceil(shotsMade / decimalPercent);
+        }
+        else
+        {
+            int shotsMade = desiredScore / twoPointer;
+            double decimalPercent = (double) shotPercentage / 100;
+
+            shotsRequired = Math.ceil(shotsMade / decimalPercent);
+        }
+        return (int) shotsRequired;
     }
 }

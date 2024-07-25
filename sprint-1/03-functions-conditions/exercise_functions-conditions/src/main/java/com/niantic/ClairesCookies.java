@@ -21,7 +21,11 @@ public class ClairesCookies
      */
     public double calculateSubtotal(int quantity)
     {
-        return 0;
+
+        double dozenCost = 12.95;
+
+        return quantity * dozenCost;
+
     }
 
     /*
@@ -43,7 +47,14 @@ public class ClairesCookies
      */
     public double calculateTotal(int quantity)
     {
-        return 0;
+
+        double dozenCost = 12.95;
+
+        double dozensOrdered = dozenCost * quantity;
+        double taxedAmount = dozensOrdered * TaxRate;
+
+
+        return dozensOrdered + taxedAmount;
     }
 
     /*
@@ -75,7 +86,17 @@ public class ClairesCookies
      */
     public double calculateQuickOrder(int snickerDozen, int chocolateDozen, int frostedDozen)
     {
-        return 0;
+
+       double snickerDozenPrice = 12.95;
+       double chocolateDozenPrice = 13.95;
+       double frostedDozenPrice = 15.95;
+
+       double snickerOrder = snickerDozenPrice * snickerDozen;
+       double chocolateOrder = chocolateDozenPrice * chocolateDozen;
+       double frostedOrder = frostedDozenPrice * frostedDozen;
+       double sum = snickerOrder + chocolateOrder + frostedOrder;
+
+       return sum + (sum * TaxRate);
     }
 
 
@@ -103,7 +124,31 @@ public class ClairesCookies
      */
     public double calculateCustomOrder (int quantity, boolean hasChocolateChips, boolean hasFrosting)
     {
-        return 0;
+
+        double costPerDozenBase = 12.95;
+        double chocolateChipPricePerDozen = 1.00;
+        double frostingPricePerDozen = 2.00;
+
+        double pricePerDozen = costPerDozenBase * quantity;
+
+
+        if(hasChocolateChips && hasFrosting)
+        {
+            pricePerDozen += (chocolateChipPricePerDozen * quantity);
+            pricePerDozen += (frostingPricePerDozen * quantity);
+        }
+        else if(hasFrosting)
+        {
+            pricePerDozen += (frostingPricePerDozen * quantity);
+        }
+        else if(hasChocolateChips)
+        {
+            pricePerDozen += (chocolateChipPricePerDozen * quantity);
+        }
+
+
+        return pricePerDozen + (pricePerDozen * TaxRate);
+
     }
 
 }
