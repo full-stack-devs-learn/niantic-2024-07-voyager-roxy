@@ -95,12 +95,14 @@ public class BackyardBasketball
 
         if (isThree)
         {
-            shotsMade = Math.ceil((double) desiredScore / threePointer);
+            shotsMade = (double) desiredScore / threePointer;
         }
         else
         {
-            shotsMade = Math.ceil((double) desiredScore / twoPointer);
+            shotsMade = (double) desiredScore / twoPointer;
         }
+
+        shotsMade = Math.ceil(shotsMade);
 
         double decimalPercent = (double) shotPercentage / 100;
         shotsRequired = (int) (Math.ceil(shotsMade / decimalPercent));
