@@ -252,8 +252,7 @@ public class Main
 
         int totalShots = shotsMade + shotsMissed;
 
-        System.out.println("13. Shots Pete Took");
-        System.out.println("totalShots: " + totalShots);
+        System.out.println("13. Shots Pete Took: " + totalShots);
         System.out.println();
 
 
@@ -268,8 +267,7 @@ public class Main
 
         int twoPointShotsMade = takenShots - missedShots - threePointShotsMade;
 
-        System.out.println("14. 2 Point Shots Made");
-        System.out.println("twoPointShotsMade: " + twoPointShotsMade);
+        System.out.println("14. 2 Point Shots Made: " + twoPointShotsMade);
         System.out.println();
 
 
@@ -283,8 +281,7 @@ public class Main
         int patShots = peteShots * 2;
         int combinedShots = peteShots + patShots;
 
-        System.out.println("15. Total Shots by Pete and Pat");
-        System.out.println("combinedShots: " + combinedShots);
+        System.out.println("15. Total Shots by Pete and Pat: " + combinedShots);
         System.out.println();
 
 
@@ -295,14 +292,13 @@ public class Main
 
         int peteMadeShots = 13;
         int patMadeShots = 9;
-        
+
         peteMadeShots++;
         patMadeShots++;
 
-        int totalTwosomeShots = peteMadeShots + patMadeShots  ;
+        int totalTwosomeShots = peteMadeShots + patMadeShots;
 
-        System.out.println("16. Total Shots by Terrifying Twosome");
-        System.out.println("totalTwosomeShots:  " + totalTwosomeShots);
+        System.out.println("16. Total Shots by Terrifying Twosome: " + totalTwosomeShots);
         System.out.println();
 
 
@@ -316,9 +312,9 @@ public class Main
 
         int totalShotsPete = shotsMadePete + shotsMissedPete;
         double percentageMade = (double)shotsMadePete / totalShotsPete * 100;
+        percentageMade = Math.round(percentageMade);
 
-        System.out.println("17. Percentage of Shots Made");
-        System.out.println("percentageMade: " + percentageMade + " %");
+        System.out.println("17. Percentage of Shots Made: " + percentageMade + " %");
         System.out.println();
 
 
@@ -333,14 +329,13 @@ public class Main
 
         int threePointShotValue = 3;
         double peteAndPatPercentageMade = .7;
-        int scoreToWin = 33;
+        int opponentScore = 31;
 
-        int threePointShotsNeeded = scoreToWin / threePointShotValue;
+        int threePointShotsNeeded = (int) Math.ceil((double)opponentScore / threePointShotValue);
         double overallThreePointersShot = threePointShotsNeeded / peteAndPatPercentageMade;
-        long shotsNeeded = (Math.round(overallThreePointersShot));
+        int shotsNeeded = (int) Math.ceil(overallThreePointersShot);
 
-        System.out.println("18. 3 Point Shots By Pete and Pat Needed to Win Game");
-        System.out.println("shotsNeeded: " + shotsNeeded);
+        System.out.println("18. 3 Point Shots By Pete and Pat Needed to Win Game: " + shotsNeeded);
         System.out.println();
 
 
@@ -365,6 +360,14 @@ public class Main
         // his students. How many cookies will each student
         // receive? (Students can only receive whole cookies)
 
+        int dozenCookies = 12;
+        int seanStudents = 14;
+
+        int totalCookies = dozenCookies * 3;
+        int cookiesPerStudent = totalCookies / seanStudents;
+
+        System.out.println("19. Cookies per student: " + cookiesPerStudent);
+        System.out.println();
 
 
         // 20. Sean has 14 students in his class.
@@ -374,6 +377,11 @@ public class Main
         // his students. After giving the students their
         // cookies, how many cookies will be left over?
 
+        int cookiesGiven = seanStudents * cookiesPerStudent;
+        int cookiesLeftOver = totalCookies - cookiesGiven;
+
+        System.out.println("20. Cookies left over: " + cookiesLeftOver);
+        System.out.println();
 
 
         // 21. Sean's class has earned a cookie party.
@@ -382,6 +390,11 @@ public class Main
         // does he need to buy from Claire's Cookies so that
         // each student can receive 3 cookies.
 
+        int threeCookiesPerStudent = seanStudents * 3;
+        long dozenCookiesNeeded = Math.round((double)threeCookiesPerStudent / dozenCookies);
+
+        System.out.println("21. Dozen Cookies Needed From Claire's Cookies: " + dozenCookiesNeeded);
+        System.out.println();
 
 
         // 22. Sean's class has earned a cookie party. The number
@@ -400,12 +413,31 @@ public class Main
 
         // How many dozen cookies does Sean need to buy.
 
+        int numberOfStudentsWith100 = 2;
+        int numberOfStudentsAbove90 = 4;
+
+        int numberOfStudentBelow90 = seanStudents - numberOfStudentsAbove90 - numberOfStudentsWith100;
+        int cookiesFor100Score = numberOfStudentsWith100 * 4;
+        int cookiesForAbove90Score = numberOfStudentsAbove90 * 3;
+        int cookiesForBelow90Score = numberOfStudentBelow90 * 2;
+        int totalCookiesNeeded = cookiesFor100Score + cookiesForBelow90Score + cookiesForAbove90Score;
+
+        long dozensNeeded = Math.round((double)totalCookiesNeeded / dozenCookies);
+
+
+        System.out.println("22. Dozen Cookies Needed: " + dozensNeeded);
+        System.out.println();
 
 
         // 23. If Claire's Cookies sells each dozen cookies for 12.99,
         // how much will it cost Sean to buy 4 dozen cookies.
 
+        double dozenCost = 12.99;
 
+        double dozenCost4 = dozenCost * 4;
+
+        System.out.println("23. Cost for 4 Dozen Cookies: $" + dozenCost4);
+        System.out.println();
 
         // (Use this information for the next several questions)
         // Claire now charges different prices for different
@@ -426,21 +458,73 @@ public class Main
 
         // 24. How many total dozen cookies does Sean need to buy?
 
+        int snickerDoodle = 9;
+        int chocolateChip = 15;
+        int frostedChocolateChip = 18;
+
+        int totalSnickerDoodleDozens = (int) Math.ceil((double)snickerDoodle / dozenCookies);
+        int totalChocolateChipDozens = (int) Math.ceil((double)chocolateChip / dozenCookies);
+        int totalFrostedChocolateChipDozens = (int) Math.ceil((double)frostedChocolateChip / dozenCookies);
+        int totalDozens = totalSnickerDoodleDozens + totalChocolateChipDozens + totalFrostedChocolateChipDozens;
+
+        System.out.println("24. Total Dozen Cookies: " + totalDozens);
+        System.out.println();
+
 
 
         // 25. What is the total cost of this order?
+
+        double snickerDoodleCostPerDozen = 12.99;
+        double chocolateChipCostPerDozen = 13.99;
+        double frostedChocolateChipCostPerDozen = 15.99;
+
+        double snickerDoodleCost = snickerDoodleCostPerDozen * totalSnickerDoodleDozens;
+        double chocolateChipCost = chocolateChipCostPerDozen * totalChocolateChipDozens;
+        double frostedChocolateChipCost = frostedChocolateChipCostPerDozen * totalFrostedChocolateChipDozens;
+
+        double sumOfOrder = snickerDoodleCost + chocolateChipCost + frostedChocolateChipCost;
+
+        System.out.println("25. Total Cost of this Order: $" + sumOfOrder);
+        System.out.println();
+
 
 
 
         // 26. How many cookies will be left over of each type of cookie?
         // (Snicker Doodles, Chocolate Chip, Frosted Chocolate Chip)
 
+        int totalSnickerDoodle = totalSnickerDoodleDozens * dozenCookies;
+        int totalChocolateChip = totalChocolateChipDozens * dozenCookies;
+        int totalFrostedChocolateChip = totalFrostedChocolateChipDozens * dozenCookies;
+
+        int leftOverSnickerDoodle = totalSnickerDoodle % snickerDoodle;
+        int leftOverChocolateChip = totalChocolateChip % chocolateChip;
+        int leftOverFrostedChocolateChip = totalFrostedChocolateChip % frostedChocolateChip;
+
+        System.out.println("26. Left Over Cookies: ");
+        System.out.println("Snicker doodle: " + leftOverSnickerDoodle);
+        System.out.println("Chocolate Chip: " + leftOverChocolateChip);
+        System.out.println("Frosted Chocolate Chip: " + leftOverFrostedChocolateChip);
+        System.out.println();
 
 
         // 27. How much money could Sean have saved if he would
         // have bought: 2 dz Frosted Chocolate Chip
         //              1 dz Chocolate Chip
         //              1 dz Snicker Doodle
+
+        double twoDozenFrostedChocoChip = frostedChocolateChipCostPerDozen * 2;
+        double sumOfNewAmount = twoDozenFrostedChocoChip + chocolateChipCostPerDozen + snickerDoodleCostPerDozen;
+        double savingsAmountTotal = sumOfOrder - sumOfNewAmount;
+
+        savingsAmountTotal *= 100;
+
+        double roundedAmount = Math.round(savingsAmountTotal);
+        double roundedAmountAsDecimal = roundedAmount / 100;
+
+
+        System.out.println("27. Money Sean Could Have Saved: $" + roundedAmountAsDecimal);
+        System.out.println();
     }
 
 
