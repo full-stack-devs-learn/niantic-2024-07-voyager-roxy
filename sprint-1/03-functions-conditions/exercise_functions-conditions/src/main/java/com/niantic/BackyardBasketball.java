@@ -58,7 +58,7 @@ public class BackyardBasketball
         {
             shotsMade *= 2;
         }
-        System.out.println("Shots made: " + shotsMade);
+
 
         return (int) shotsMade;
 
@@ -89,22 +89,22 @@ public class BackyardBasketball
 
         int twoPointer = 2;
         int threePointer = 3;
-        double shotsRequired = 0;
+        double shotsMade;
+        int shotsRequired;
 
 
-        if (isThree) {
-            int shotsMade = (int) Math.ceil((double) desiredScore / threePointer);
-            double decimalPercent = (double) shotPercentage / 100;
-
-            shotsRequired = Math.ceil(shotsMade / decimalPercent);
+        if (isThree)
+        {
+            shotsMade = Math.ceil((double) desiredScore / threePointer);
         }
         else
         {
-            int shotsMade = desiredScore / twoPointer;
-            double decimalPercent = (double) shotPercentage / 100;
-
-            shotsRequired = Math.ceil(shotsMade / decimalPercent);
+            shotsMade = Math.ceil((double) desiredScore / twoPointer);
         }
-        return (int) shotsRequired;
+
+        double decimalPercent = (double) shotPercentage / 100;
+        shotsRequired = (int) (Math.ceil(shotsMade / decimalPercent));
+
+        return shotsRequired;
     }
 }
