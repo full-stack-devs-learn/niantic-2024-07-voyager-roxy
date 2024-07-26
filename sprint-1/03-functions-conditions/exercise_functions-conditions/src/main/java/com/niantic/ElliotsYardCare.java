@@ -21,7 +21,25 @@ public class ElliotsYardCare
      */
     public double  calculateCost(int width, int length, boolean  isTrimming)
     {
-        return 0;
+
+
+        double withoutTrimming = 2.50;
+        double withTrimming = 3.00;
+
+        double area = (double)(width * length) / 1000;
+        double cost;
+
+        if (isTrimming)
+        {
+            cost = area * withTrimming;
+        }
+        else
+        {
+            cost = area * withoutTrimming;
+        }
+
+
+        return cost;
     }
 
     /*
@@ -41,7 +59,11 @@ public class ElliotsYardCare
      */
     public double  calculateProfit(int width, int length, boolean  isTrimming, int amountCharged)
     {
-        return 0;
+
+        double profit = amountCharged - calculateCost(width, length, isTrimming);
+
+
+        return profit;
     }
 
     /*
@@ -62,7 +84,23 @@ public class ElliotsYardCare
      */
     public double calculateTime(int width, int length, boolean  isTrimming)
     {
-        return 0;
+
+        double timeToMow = .5;
+        double timeToTrim = .75;
+        double hoursToComplete;
+
+        double area = (double)(width * length) / 1000;
+
+        if(isTrimming)
+        {
+            hoursToComplete = area * timeToTrim;
+        }
+        else
+        {
+            hoursToComplete = area * timeToMow;
+        }
+
+        return hoursToComplete;
     }
 
     /*
@@ -93,6 +131,25 @@ public class ElliotsYardCare
      */
     public double  calculatePrice(int width, int length, boolean  isTrimming)
     {
+
+//        double minIncomeRequired = 10;
+//        double minYardPrice = 25;
+//        double trimCost = 25;
+//        double overallCost;
+//
+//        double area = width * length;
+//
+//        if (isTrimming)
+//        {
+//            overallCost += trimCost;
+//        }
+//
+//
+//
+//        double newPrice = minIncomeRequired + overallCost;
+//
+//
+//        return newPrice;
         return 0;
     }
 }
