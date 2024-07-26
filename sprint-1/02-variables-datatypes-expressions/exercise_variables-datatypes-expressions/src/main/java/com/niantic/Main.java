@@ -1,5 +1,7 @@
 package com.niantic;
 
+import javax.crypto.spec.PSource;
+
 public class Main
 {
     public static void main(String[] args)
@@ -558,15 +560,38 @@ public class Main
         // 28. What is the total cost to Elliot when
         // he mows a yard that is 100 x 50 feet?
 
+        double gasCostPer1000SqFt = 2.50;
+        int yardWidth = 100;
+        int yardLength = 50;
+
+        int yardArea = yardLength * yardWidth;
+        double yardCost = (double) (yardArea / 1000) * gasCostPer1000SqFt;
+
+        System.out.println("28. Cost to Mow 100 x 50 ft Yard: $" + yardCost);
+        System.out.println();
+
 
 
         // 29. How much total money does Elliot earn
         // to maintain a 100 x 50 ft yard?
 
 
+        int priceChargedForLawn = 30;
+
+        double moneyEarned = priceChargedForLawn - yardCost;
+
+        System.out.println("29. Money Elliot Earned: $" + moneyEarned);
+        System.out.println();
 
         // 30. How much time does it take Elliot to mow
         // a 100 x 50 ft yard?
+
+        double timePer1000SqFt = .75;
+
+        double overallTime = (double) yardArea / 1000 * timePer1000SqFt;
+
+        System.out.println("30. Time To Mow 100 x 50 ft yard: " + overallTime);
+        System.out.println();
 
 
 
@@ -574,15 +599,31 @@ public class Main
         // on a 100 x 50 foot yard?
 
 
+        double incomeEarned = moneyEarned / overallTime;
+
+        System.out.println("31. Money Made Per Hour: $" + incomeEarned);
+        System.out.println();
 
         // 32. What is Elliot's cost per hour on a medium
         // sized yard?
+
+
+        double costPerHour = yardCost / overallTime;
+
+        System.out.println("32. Cost Per Hour: $" + costPerHour);
+        System.out.println();
 
 
 
         // 33. How much money should Elliot charge for a medium yard
         // in order to earn $10 per hour?
 
+        double desiredIncome = 10;
 
+        double newPricePerHour = desiredIncome + costPerHour;
+        double newPrice = newPricePerHour * overallTime;
+
+        System.out.println("33. How Much To Charge for $10 per hour: $" + newPrice);
+        System.out.println();
     }
 }
