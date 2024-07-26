@@ -11,7 +11,7 @@ public class Exercises
      */
     public String[] daysOfTheWeek()
     {
-        return null;
+        return new String[]{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     }
 
     /*
@@ -23,7 +23,7 @@ public class Exercises
      */
     public String[] monthsOfTheYear()
     {
-        return null;
+        return new String[] {"January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     }
 
     /*
@@ -38,7 +38,13 @@ public class Exercises
      */
     public int[] oneToFifty()
     {
-        return null;
+        int[] nums = new int[50];
+
+        for (int i = 0; i < nums.length; i++)
+        {
+            nums[i] = i + 1;
+        }
+        return nums;
     }
 
     /*
@@ -53,7 +59,13 @@ public class Exercises
      */
     public int[] evenNumbers()
     {
-        return null;
+        int[] nums = new int[100];
+
+        for (int i = 0; i < nums.length; i++)
+        {
+            nums[i] = (2 * i) + 2;
+        }
+        return nums;
     }
 
     /*
@@ -75,7 +87,7 @@ public class Exercises
      */
     public String firstDayOfWeek(String[] daysOfTheWeek)
     {
-        return null;
+        return daysOfTheWeek[0];
     }
 
     /*
@@ -97,7 +109,7 @@ public class Exercises
      */
     public String lastDayOfWeek(String[] daysOfTheWeek)
     {
-        return null;
+        return daysOfTheWeek[daysOfTheWeek.length - 1];
     }
 
     /*
@@ -116,7 +128,14 @@ public class Exercises
      */
     public String monthName(String[] months, int monthNumber)
     {
-        return null;
+        String month = "";
+
+        for (int i = 0; i < months.length; i++){
+            if(monthNumber == i + 1){
+                month = months[i];
+            }
+        }
+        return month;
     }
 
     /*
@@ -138,6 +157,14 @@ public class Exercises
      */
     public boolean hasName(String[] names, String nameToFind)
     {
+        for (String name: names)
+        {
+            if (name.equalsIgnoreCase(nameToFind))
+            {
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -159,7 +186,15 @@ public class Exercises
      */
     public int countName(String[] names, String nameToFind)
     {
-        return -1;
+        int nameCounter = 0;
+
+        for (String name: names)
+        {
+            if (name.equalsIgnoreCase(nameToFind)){
+                nameCounter ++;
+        }
+        }
+        return nameCounter;
     }
 
     /*
@@ -173,7 +208,12 @@ public class Exercises
      */
     public int sumNumbers(int[] numbers)
     {
-        return -1;
+        int sum = 0;
+
+        for(int num: numbers){
+            sum += num;
+        }
+        return sum;
     }
 
     /*
@@ -188,7 +228,15 @@ public class Exercises
      */
     public int doubleEvens(int[] numbers)
     {
-        return -1;
+        int sum = 0;
+
+        for(int num : numbers){
+            if(num % 2 == 0){
+                sum += num;
+            }
+        }
+
+        return sum * 2;
     }
 
     /*
@@ -203,7 +251,14 @@ public class Exercises
      */
     public int sumEveryThird(int[] numbers)
     {
-        return -1;
+        int sum = 0;
+
+        for (int i = 0; i < numbers.length; i+=3){
+            sum += numbers[i];
+
+        }
+
+        return sum;
     }
 
     /*
@@ -216,7 +271,14 @@ public class Exercises
      */
     public double averagePrice(double[] prices)
     {
-        return -1;
+        double sum = 0;
+
+        for (double price : prices){
+            sum += price;
+        }
+
+
+        return sum / prices.length;
     }
 
     /*
@@ -229,20 +291,36 @@ public class Exercises
      */
     public double highestValue(double[] prices)
     {
-        return -1;
+        double max = prices[0];
+
+        for (double price : prices) {
+            if (price > max) {
+                max = price;
+            }
+        }
+
+        return max;
     }
 
     /*
      * 15)
      * Given an array of prices, return the
-     * lowest price that is greater than 0.
+     * lowest price.
      *
      * lowestPrice([-15.25, 15.25, 2.34, 3.50])                        =>  2.34
      * lowestPrice([12.75, -5.5, 10.25, 18.44, 4.23, -15.55, 9.20])    =>  -15.55
      */
     public double lowestValue(double[] prices)
     {
-        return -1;
+        double min = prices[0];
+
+        for(double price : prices){
+            if (price < min){
+                min = price;
+            }
+        }
+
+        return min;
     }
 
 }
