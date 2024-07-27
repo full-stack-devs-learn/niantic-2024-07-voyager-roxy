@@ -19,7 +19,18 @@ public class ExercisesChallenge
      */
     public int sumFirst2Numbers(int[] numbers)
     {
-        return -1;
+        int sum = 0;
+
+            if(numbers.length == 0){
+                sum += 0;
+            } else if (numbers.length == 1) {
+                sum += numbers[0];
+            }
+            else {
+                sum = numbers[0] + numbers[1];
+            }
+
+        return sum;
     }
 
     /*
@@ -32,7 +43,16 @@ public class ExercisesChallenge
      */
     public String[] reverseNames(String[] names)
     {
-        return null;
+
+        String[] newArray = new String[names.length];
+
+        for (int i = 0; i < names.length; i++)
+        {
+            newArray[i] = names[names.length - 1 - i];
+        }
+
+
+        return newArray;
     }
 
 
@@ -63,6 +83,31 @@ public class ExercisesChallenge
      */
     public int[] combineArrays(int[][] numbers)
     {
-        return null;
+
+        int totalSpots = 0;
+
+        for (int i = 0; i < numbers.length; i++)
+        {
+            totalSpots += numbers[i].length;
+        }
+
+        int[] newArray = new int[totalSpots];
+
+
+        int index = 0;
+
+        for(int i = 0; i < numbers.length; i++)
+        {
+            int[] row = numbers[i];
+
+            for (int j = 0; j < row.length; j++)
+            {
+                newArray[index++] = row[j];
+
+            }
+
+        }
+
+        return newArray;
     }
 }
