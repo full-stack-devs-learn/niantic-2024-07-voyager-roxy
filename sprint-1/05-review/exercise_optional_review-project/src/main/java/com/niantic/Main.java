@@ -108,7 +108,7 @@ public class Main
             System.out.println("Please enter test scores first.");
         }
         else {
-            int maxScore = 0;
+            int maxScore = scores[0];
 
             for (int score : scores) {
                 if (score > maxScore) {
