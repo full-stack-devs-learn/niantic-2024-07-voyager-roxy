@@ -1,6 +1,8 @@
 package com.niantic;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.function.DoubleToIntFunction;
 
 public class Main
 {
@@ -41,7 +43,7 @@ public class Main
     public static int getHomeSelection()
     {
         System.out.println();
-        System.out.println("Welcome to <<Enter app name>>!");
+        System.out.println("Welcome to The Test Calculator!");
         System.out.println("------------------------------");
         System.out.println();
         System.out.println("What would you like to do?");
@@ -49,29 +51,92 @@ public class Main
         System.out.println("2) Calculate the class average");
         System.out.println("3) Find the highest score");
         System.out.println("4) Find the lowest score");
-        System.out.println("0) Exit");
+        System.out.println("5) Exit");
 
-        System.out.print("Please select an option:");
+        System.out.print("Please select an option: ");
         return Integer.parseInt(userInput.nextLine());
+//        return userInput.nextInt();
     }
 
     private static void createNewTestScores()
     {
-        System.out.println("Enter code to create a new array and ask for test scores");
+
+        System.out.println("Please enter the number of scores: ");
+
+//        int totalNumberOfScores = userInput.nextInt();
+        int totalNumberOfScores = Integer.parseInt(userInput.nextLine());
+
+        scores = new int[totalNumberOfScores];
+
+        System.out.println("Please enter the scores, pressing enter after each score: ");
+        for(int i=0; i < totalNumberOfScores; i++){
+            scores[i] = Integer.parseInt(userInput.nextLine());
+//            scores[i] = userInput.nextInt();
+        }
+
+        System.out.println(Arrays.toString(scores));
     }
 
     private static void calculateAverage()
     {
-        System.out.println("Add logic to calculate the average of all test scores, and display it");
+
+        if(scores.length == 0)
+        {
+            System.out.println("Please enter test scores first.");
+        }
+        else {
+            int sum = 0;
+
+            for (int score : scores) {
+                sum += score;
+            }
+            double average = (double) sum / scores.length;
+            double roundedAverage = Math.round(average);
+
+
+            System.out.println("The average score is: " + roundedAverage);
+        }
+
+
     }
 
     private static void findHighestScore()
     {
-        System.out.println("Find the highest score of all tests and display it");
+
+        if(scores.length == 0)
+        {
+            System.out.println("Please enter test scores first.");
+        }
+        else {
+            int maxScore = 0;
+
+            for (int score : scores) {
+                if (score > maxScore) {
+                    maxScore = score;
+                }
+            }
+
+            System.out.println("The highest score is: " + maxScore);
+        }
     }
 
     private static void findLowestScore()
     {
-        System.out.println("Find the lowest score of all tests and display it");
+
+        if(scores.length == 0)
+        {
+            System.out.println("Please enter test scores first.");
+        }
+        else {
+            int minScore = scores[0];
+
+            for (int score : scores) {
+                if (score < minScore) {
+                    minScore = score;
+                }
+            }
+
+            System.out.println("The minimum score is: " + minScore);
+        }
     }
 }
