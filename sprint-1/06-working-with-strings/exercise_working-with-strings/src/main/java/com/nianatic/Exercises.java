@@ -18,7 +18,16 @@ public class Exercises
      */
     public String changeCase(String word, boolean toUpperCase)
     {
-        return null;
+
+        if (toUpperCase)
+        {
+            return word.toUpperCase();
+        }
+        else
+        {
+            return word.toLowerCase();
+        }
+
     }
 
     /*
@@ -49,7 +58,8 @@ public class Exercises
      */
     public String createHtml(String content, String elementName)
     {
-        return null;
+
+        return "<" + elementName + ">" + content +  "</" + elementName + ">";
     }
 
     /*
@@ -57,12 +67,12 @@ public class Exercises
      *
      * <p></p>
      *
-     * Elements that have no content can be "self closing".
+     * Elements that have no content can be "self-closing".
      *
      * <p />
      *
      * Modify the logic that you used for the CreateHtml
-     * to return a self closing element when there is no
+     * to return a self-closing element when there is no
      * content provided.
      *
      * moreHtml("This is a paragraph", "p") => <p>This is a paragraph</p>
@@ -71,7 +81,19 @@ public class Exercises
      */
     public String moreHtml(String content, String elementName)
     {
-        return null;
+
+        String correctFormat;
+
+        if(content.isEmpty())
+        {
+            correctFormat = "<" + elementName + " />";
+        }
+        else
+        {
+            correctFormat = "<" + elementName + ">" + content +  "</" + elementName + ">";
+        }
+
+        return correctFormat;
     }
 
     /*
@@ -94,7 +116,18 @@ public class Exercises
      */
     public String createXml(int id, String name)
     {
-        return  null;
+
+        String customerOpeningTag = "<customer>";
+        String customerClosingTag = "</customer>";
+
+        String idOpeningTag = "<id>";
+        String idClosingTag = "</id>";
+
+        String nameOpeningTag = "<name>";
+        String nameClosingTag = "</name>";
+
+
+        return customerOpeningTag + idOpeningTag + id + idClosingTag + nameOpeningTag + name + nameClosingTag + customerClosingTag;
     }
 
     /*
@@ -131,7 +164,18 @@ public class Exercises
      */
     public String formattedXml(int id, String name)
     {
-        return null;
+
+        String customerOpeningTag = "<customer>";
+        String customerClosingTag = "</customer>";
+
+        String idOpeningTag = "<id>";
+        String idClosingTag = "</id>";
+
+        String nameOpeningTag = "<name>";
+        String nameClosingTag = "</name>";
+
+
+        return customerOpeningTag + "\n" + "  " + idOpeningTag + id + idClosingTag + "\n" + "  " + nameOpeningTag + name + nameClosingTag + "\n" + customerClosingTag;
     }
 
     /*
@@ -155,19 +199,35 @@ public class Exercises
      */
     public String formatFullName(String firstName, String middleName, String lastName, String suffix)
     {
-        return  null;
+
+
+        if (middleName.isEmpty() && suffix.isEmpty())
+        {
+            return firstName + " " + lastName;
+        } else if (suffix.isEmpty()) {
+            return firstName + " " + middleName + " " + lastName;
+        }
+        else if (middleName.isEmpty())
+        {
+            return firstName + " " + lastName + ", " + suffix;
+        }
+        else
+        {
+            return firstName + " " + middleName + " " + lastName + ", " + suffix;
+        }
+
     }
 
     /*
      * You are writing a program for HR.
      * When they hire a new employee they must be
-     * given an username to access the network.
+     * given a username to access the network.
      *
      * The username must always be lower case and
      * is formatted as the employees first name
      * and last name separated by a period.
      *
-     * Glen Williamson => glen.willimason
+     * Glen Williamson => glen.collimation
      *
      * If the employee has a middle name, the
      * middle initial should also be added like
@@ -175,7 +235,7 @@ public class Exercises
      *
      * Glen Carter Williamson => glen.c.williamson
      *
-     * Your function accepts the full name of the employee
+     * Your function accepts the full name of the employee,
      * and you must return the new username.
      *
      * Examples:
@@ -186,6 +246,36 @@ public class Exercises
      */
     public String createUserName(String fullName)
     {
+
+        String[] names = fullName.split(" ");
+
+        if (names.length > 2) {
+            String firstName = names[0];
+            String lowerCaseFirstName = firstName.toLowerCase();
+
+            String middleName = names[1];
+            String lowerCaseMiddleName = middleName.toLowerCase();
+            String middleInitial = lowerCaseMiddleName.substring(0, 1);
+
+            String lastName = names[2];
+            String lowerCaseLastName = lastName.toLowerCase();
+
+            if(middleName.endsWith(",")){
+                String actualLastName = lowerCaseMiddleName.replace(",", "");
+                return lowerCaseFirstName + "." + actualLastName;
+            }
+
+            return lowerCaseFirstName + "." + middleInitial + "." + lowerCaseLastName;
+        } else if (names.length == 2) {
+            String firstName = names[0];
+            String lowerCaseFirstName = firstName.toLowerCase();
+
+            String lastName = names[1];
+            String lowerCaseLastName = lastName.toLowerCase();
+
+            return lowerCaseFirstName + "." + lowerCaseLastName;
+        }
+
         return null;
     }
 }
