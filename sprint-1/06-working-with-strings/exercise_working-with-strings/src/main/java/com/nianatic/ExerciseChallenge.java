@@ -26,7 +26,23 @@ public class ExerciseChallenge
      */
     public String reformatName(String fullName)
     {
-        return null;
+
+        String[] splitName = fullName.split(" ");
+
+        if (splitName.length == 3)
+        {
+            if (splitName[1].endsWith(","))
+            {
+                return splitName[1] + " " + splitName[0] + ", " + splitName[2];
+            }
+            return splitName[1] + ", " + splitName[0] + ", " + splitName[2];
+        } else if (splitName.length > 3)
+        {
+            return splitName[1] + ", " + splitName[0] + ", " + splitName[2] + " " + splitName[3];
+        } else
+        {
+            return splitName[1] + ", " + splitName[0];
+        }
     }
 
     /*
@@ -50,7 +66,8 @@ public class ExerciseChallenge
      */
     public String createJSON(int id, String name)
     {
-        return  null;
+
+        return  "{ " + "\"id\": " + id + ", " + "\"name\": " + "\""+ name + "\" }";
     }
 
 }
