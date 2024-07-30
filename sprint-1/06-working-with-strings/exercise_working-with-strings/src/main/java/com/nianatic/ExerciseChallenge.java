@@ -26,7 +26,6 @@ public class ExerciseChallenge
      */
     public String reformatName(String fullName)
     {
-
         String[] splitName = fullName.split(" ");
 
         if (splitName.length == 3)
@@ -66,7 +65,6 @@ public class ExerciseChallenge
      */
     public String createJSON(int id, String name)
     {
-
         return  "{ " + "\"id\": " + id + ", " + "\"name\": " + "\""+ name + "\" }";
     }
 

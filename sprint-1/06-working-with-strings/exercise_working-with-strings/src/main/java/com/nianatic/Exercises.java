@@ -18,7 +18,6 @@ public class Exercises
      */
     public String changeCase(String word, boolean toUpperCase)
     {
-
         if (toUpperCase)
         {
             return word.toUpperCase();
@@ -27,7 +26,6 @@ public class Exercises
         {
             return word.toLowerCase();
         }
-
     }
 
     /*
@@ -58,7 +56,6 @@ public class Exercises
      */
     public String createHtml(String content, String elementName)
     {
-
         return "<" + elementName + ">" + content +  "</" + elementName + ">";
     }
 
@@ -81,7 +78,6 @@ public class Exercises
      */
     public String moreHtml(String content, String elementName)
     {
-
         String correctFormat;
 
         if(content.isEmpty())
@@ -116,7 +112,6 @@ public class Exercises
      */
     public String createXml(int id, String name)
     {
-
         String customerOpeningTag = "<customer>";
         String customerClosingTag = "</customer>";
 
@@ -125,7 +120,6 @@ public class Exercises
 
         String nameOpeningTag = "<name>";
         String nameClosingTag = "</name>";
-
 
         return customerOpeningTag + idOpeningTag + id + idClosingTag + nameOpeningTag + name + nameClosingTag + customerClosingTag;
     }
@@ -164,7 +158,6 @@ public class Exercises
      */
     public String formattedXml(int id, String name)
     {
-
         String customerOpeningTag = "<customer>";
         String customerClosingTag = "</customer>";
 
@@ -173,7 +166,6 @@ public class Exercises
 
         String nameOpeningTag = "<name>";
         String nameClosingTag = "</name>";
-
 
         return customerOpeningTag + "\n" + "  " + idOpeningTag + id + idClosingTag + "\n" + "  " + nameOpeningTag + name + nameClosingTag + "\n" + customerClosingTag;
     }
@@ -199,8 +191,6 @@ public class Exercises
      */
     public String formatFullName(String firstName, String middleName, String lastName, String suffix)
     {
-
-
         if (middleName.isEmpty() && suffix.isEmpty())
         {
             return firstName + " " + lastName;
@@ -215,7 +205,6 @@ public class Exercises
         {
             return firstName + " " + middleName + " " + lastName + ", " + suffix;
         }
-
     }
 
     /*
@@ -246,10 +235,10 @@ public class Exercises
      */
     public String createUserName(String fullName)
     {
-
         String[] names = fullName.split(" ");
 
-        if (names.length > 2) {
+        if (names.length > 2)
+        {
             String firstName = names[0];
             String lowerCaseFirstName = firstName.toLowerCase();
 
@@ -266,7 +255,8 @@ public class Exercises
             }
 
             return lowerCaseFirstName + "." + middleInitial + "." + lowerCaseLastName;
-        } else if (names.length == 2) {
+        } else if (names.length == 2)
+        {
             String firstName = names[0];
             String lowerCaseFirstName = firstName.toLowerCase();
 
