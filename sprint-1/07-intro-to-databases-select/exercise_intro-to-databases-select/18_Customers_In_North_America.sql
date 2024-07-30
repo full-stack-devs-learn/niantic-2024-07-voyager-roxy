@@ -7,3 +7,8 @@ USE northwind;
 
 -- Expected: 21 Rows
 
+SELECT company_name
+	, country
+FROM customers
+WHERE country = 'USA' or country = 'Canada' or country = 'Mexico'
+ORDER BY country ASC;
