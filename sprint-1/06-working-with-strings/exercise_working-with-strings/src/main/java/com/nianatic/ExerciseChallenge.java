@@ -26,21 +26,29 @@ public class ExerciseChallenge
      */
     public String reformatName(String fullName)
     {
-        String[] splitName = fullName.split(" ");
+        String strippedName = fullName.strip();
+        String[] splitName = strippedName.split(" ");
+
+        String firstName = splitName[0];
+        String secondName = splitName[1];
 
         if (splitName.length == 3)
         {
-            if (splitName[1].endsWith(","))
+            String thirdNamePart = splitName[2];
+            if (secondName.endsWith(","))
             {
-                return splitName[1] + " " + splitName[0] + ", " + splitName[2];
+                String thirdNamePartCommaStripped = thirdNamePart.replace(",", "");
+                return secondName + " " + firstName + ", " + thirdNamePartCommaStripped;
             }
-            return splitName[1] + ", " + splitName[0] + ", " + splitName[2];
+            return secondName + ", " + firstName + ", " + thirdNamePart;
         } else if (splitName.length > 3)
         {
-            return splitName[1] + ", " + splitName[0] + ", " + splitName[2] + " " + splitName[3];
+            String suffix = splitName[2];
+            String title = splitName[3];
+            return secondName + ", " + firstName + ", " + suffix + " " + title;
         } else
         {
-            return splitName[1] + ", " + splitName[0];
+            return secondName + ", " + firstName;
         }
     }
 
@@ -65,7 +73,8 @@ public class ExerciseChallenge
      */
     public String createJSON(int id, String name)
     {
-        return  "{ " + "\"id\": " + id + ", " + "\"name\": " + "\""+ name + "\" }";
+        return  "{ " + "\"id\": " + id + ", " +
+                "\"name\": " + "\""+ name + "\" }";
     }
 
 }

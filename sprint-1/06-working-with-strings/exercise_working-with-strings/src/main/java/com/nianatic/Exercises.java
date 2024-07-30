@@ -121,7 +121,9 @@ public class Exercises
         String nameOpeningTag = "<name>";
         String nameClosingTag = "</name>";
 
-        return customerOpeningTag + idOpeningTag + id + idClosingTag + nameOpeningTag + name + nameClosingTag + customerClosingTag;
+        return customerOpeningTag + idOpeningTag + id + idClosingTag +
+                nameOpeningTag + name + nameClosingTag +
+                customerClosingTag;
     }
 
     /*
@@ -167,7 +169,10 @@ public class Exercises
         String nameOpeningTag = "<name>";
         String nameClosingTag = "</name>";
 
-        return customerOpeningTag + "\n" + "  " + idOpeningTag + id + idClosingTag + "\n" + "  " + nameOpeningTag + name + nameClosingTag + "\n" + customerClosingTag;
+        return customerOpeningTag + "\n" +
+                "  " + idOpeningTag + id + idClosingTag + "\n" +
+                "  " + nameOpeningTag + name + nameClosingTag + "\n" +
+                customerClosingTag;
     }
 
     /*
@@ -235,37 +240,31 @@ public class Exercises
      */
     public String createUserName(String fullName)
     {
-        String[] names = fullName.split(" ");
+        String lowerCaseName = fullName.toLowerCase().strip();
+        String[] names = lowerCaseName.split(" ");
 
         if (names.length > 2)
         {
             String firstName = names[0];
-            String lowerCaseFirstName = firstName.toLowerCase();
 
             String middleName = names[1];
-            String lowerCaseMiddleName = middleName.toLowerCase();
-            String middleInitial = lowerCaseMiddleName.substring(0, 1);
+            String middleInitial = middleName.substring(0, 1);
 
             String lastName = names[2];
-            String lowerCaseLastName = lastName.toLowerCase();
 
             if(middleName.endsWith(",")){
-                String actualLastName = lowerCaseMiddleName.replace(",", "");
-                return lowerCaseFirstName + "." + actualLastName;
+                String actualLastName = middleName.replace(",", "");
+                return firstName + "." + actualLastName;
             }
 
-            return lowerCaseFirstName + "." + middleInitial + "." + lowerCaseLastName;
-        } else if (names.length == 2)
+            return firstName + "." + middleInitial + "." + lastName;
+        } else
         {
             String firstName = names[0];
-            String lowerCaseFirstName = firstName.toLowerCase();
 
             String lastName = names[1];
-            String lowerCaseLastName = lastName.toLowerCase();
 
-            return lowerCaseFirstName + "." + lowerCaseLastName;
+            return firstName + "." + lastName;
         }
-
-        return null;
     }
 }
