@@ -45,41 +45,20 @@ OrderDetails: (Create 5 line items)
     Discount: 0
 */
 
-SET @product1_id = 2;
-SET @product2_id = 6;
-SET @product3_id = 67;
-SET @product4__id = 80;
-SET @product5_id = 7;
+SET @product1_name = 'Chai'
+	, @product2_name = 'Tofu'
+    , @product3_name = 'Ikura'
+    , @product4_name = 'Chang'
+    , @product5_name = 'Boston Crab Meat';
 
-SET @input_customer_id = 'APTEC';
-SET @input_company_name = 'Apex Technologies';
-SET @input_contact_name = 'Jordan Lee';
-SET @input_address = '123 Innovation Drive';
-SET @input_city = 'Tech City';
-SET @input_region = 'TX';
-SET @input_postal_code = 75001;
-SET @input_country = 'USA';
-
-SELECT @price1 := unit_price
-FROM products
-WHERE product_id = @product_id1;
-
-SELECT @price2 := unit_price
-FROM products
-WHERE product_id = @product_id2;
-
-SELECT @price3 := unit_price
-FROM products
-WHERE product_id = @product_id3;
-
-SELECT @price4 := unit_price
-FROM products
-WHERE product_id = @product_id;
-
-SELECT @price5 := unit_price
-FROM products
-WHERE product_id = @product_id5;
-
+SET @customer_id = 'APTEC'
+	, @company_name = 'Apex Technologies'
+    , @contact_name = 'Jordan Lee'
+    , @address = '123 Innovation Drive'
+    , @city = 'Tech City'
+    , @region = 'TX'
+    , @postal_code = 75001
+    , @country = 'USA';
 
 INSERT INTO customers
 (
@@ -94,14 +73,14 @@ INSERT INTO customers
 )
 VALUES
 (
-	input_customer_id
-    , input_company_name
-    , input_contact_name
-    , input_address
-    , input_city
-    , input_region
-    , input_postal_code
-    , input_country
+	@customer_id
+    , @company_name
+    , @contact_name
+    , @address
+    , @city
+    , @region
+    , @postal_code
+    , @country
 );
 
 INSERT INTO orders
@@ -110,32 +89,64 @@ INSERT INTO orders
     , order_date
     , ship_name
     , ship_address
+    , ship_city
+    , ship_region
+    , ship_postal_code
+    , ship_country
 )
 VALUES
 (
-	input_customer_id
-    , '2024-07-31'
-    , input_company_name
-    , input_address
+	@customer_id
+    , CURRENT_DATE
+    , @contact_name
+    , @address
+    , @city
+    , @region
+    , @postal_code
+    , @country
 );
+
+SET @order_id = LAST_INSERT_ID();
+
+SELECT @product1_id := product_id
+	, @product_price_1 := unit_price
+FROM products
+WHERE product_name = @product1_name;
+
+SELECT @product2_id := product_id
+	, @product_price_2 := unit_price
+FROM products
+WHERE product_name = @product2_name;
+
+SELECT @product3_id := product_id
+	, @product_price_3 := unit_price
+FROM products
+WHERE product_name = @product3_name;
+
+SELECT @product4_id := product_id
+	, @product_price_4 := unit_price
+FROM products
+WHERE product_name = @product4_name;
+
+SELECT @product5_id := product_id
+	, @product_price_5 := unit_price
+FROM products
+WHERE product_name = @product5_name;
 
 INSERT INTO order_details
 (
 	order_id
     , product_id
     , unit_price
-    , quantity
-    , discount
 )
 VALUES
-(
-	(last_insert_id(), product1_id, price1, 5, 0)
-    , (last_insert_id(), product2_id, price2, 5, 0)
-    , (last_insert_id(), product3_id, price3, 1, 0)
-    , (last_insert_id(), product4_id, price4, 1, 0)
-    , (last_insert_id(), product5_id, price5, 1, 0)
-)
+	(@order_id, @product1_id, @product_price_1)
+	, (@order_id, @product2_id, @product_price_2)
+	, (@order_id, @product3_id, @product_price_3)
+	, (@order_id, @product4_id, @product_price_4)
+	, (@order_id, @product5_id, @product_price_5)
+;
 
-
-
-
+SELECT *
+FROM order_details
+WHERE order_id = @order_id;

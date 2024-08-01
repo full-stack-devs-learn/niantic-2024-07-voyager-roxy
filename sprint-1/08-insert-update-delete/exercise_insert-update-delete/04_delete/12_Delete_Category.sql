@@ -14,13 +14,14 @@ USE northwind;
 -- The sript should do the rest
 
 
+SET @category_name = 'Sporting Goods';
 
-
-
+SELECT @category_id := category_id
+FROM categories
+WHERE category_name = @category_name;
 
 DELETE FROM products
-WHERE category_id = 'Sporting Goods';
-
+WHERE category_id = @category_id;
 
 DELETE FROM categories
-WHERE category = 'Sporting Goods';
+WHERE category_name = @category_name;

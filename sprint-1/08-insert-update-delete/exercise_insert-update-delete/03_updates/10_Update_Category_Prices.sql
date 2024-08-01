@@ -4,14 +4,13 @@ USE northwind;
 -- within a category by a certain percent.
 -- use variables to accept the Category name and the percent increase 
 
-SET @input_category_id = 1;
+SET @category_name = 'Beverages'
+	, @percent_increase = 1.44;
 
-SELECT @input_category_name := category_name
+SELECT @category_id := category_id
 FROM categories
-WHERE category_id = input_category_id;
-
-SET @input_percent_increase = 1.20;
+WHERE category_name = @category_name;
 
 UPDATE products
-SET unit_price = unit_price * input_percent_increase
-WHERE category_id = input_category_id;
+SET unit_price = unit_price * @percent_increase
+WHERE category_id = @category_id;
