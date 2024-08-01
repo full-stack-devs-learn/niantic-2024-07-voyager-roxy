@@ -28,8 +28,8 @@ VALUES
     , 'Abedi'
     , 'Sales Associate'
     , 'Ms.'
-    , '2000-01-29'
+    , '2000-01-01'
     , '2024-07-31'
-    , '119 Northcreek Circle'
+    , '123 Main Street'
     , ' '
 )
