@@ -2,10 +2,6 @@ package com.niantic.part_3_challenge;
 
 public class Refrigerator
 {
-    private final int MAX_TEMPERATURE = 35;
-    private final int MIN_TEMPERATURE = 0;
-
-
     private int maxCapacity;
     private int currentTemperature;
     private int available;
@@ -57,13 +53,11 @@ public class Refrigerator
         else return false;
     }
 
-    public boolean removeItem(int capacity)
+    public void removeItem(int capacity)
     {
         if(isDoorOpen && (available - capacity) >= 0)
         {
             available += capacity;
-            return true;
         }
-        else return false;
     }
 }
