@@ -77,6 +77,7 @@ public class CategoryDao
 
         if(row.next())
         {
+            categoryId = row.getInt("category_id");
             String categoryName = row.getString("category_name");
             String description = row.getString("description");
 
