@@ -25,19 +25,29 @@ public class Order
      */
     public void addItem(OrderLineItem item)
     {
-        var existingItem = shoppingCart.stream().filter(lineItem -> lineItem.getProduct().equalsIgnoreCase(item.getProduct())).findFirst();
-
-        if(existingItem.isPresent())
+        for (var product : shoppingCart)
         {
-            var currentItem = existingItem.get();
-            int newQuantity = currentItem.getQuantity() + item.getQuantity();
-            currentItem.setQuantity(newQuantity);
+            if (product.getProduct().equalsIgnoreCase(item.getProduct()))
+            {
+                product.setQuantity(product.getQuantity() + item.getQuantity());
+                return;
+            }
         }
-        else
-        {
-            shoppingCart.add(item);
-        }
+                shoppingCart.add(item);
     }
+//        method using streams shown in class
+//        var existingItem = shoppingCart.stream().filter(lineItem -> lineItem.getProduct().equalsIgnoreCase(item.getProduct())).findFirst();
+//
+//        if(existingItem.isPresent())
+//        {
+//            var currentItem = existingItem.get();
+//            int newQuantity = currentItem.getQuantity() + item.getQuantity();
+//            currentItem.setQuantity(newQuantity);
+//        }
+//        else
+//        {
+//            shoppingCart.add(item);
+//        }
 
     /*
     2. Add logic to allow a user to add an Item to a shopping cart
