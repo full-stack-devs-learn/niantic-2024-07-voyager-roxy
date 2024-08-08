@@ -96,7 +96,7 @@ public class Order
      */
     public double getOrderTotal()
     {
-        double sum = 0.0;
+        double sum = 0;
 
         for (var item : shoppingCart)
         {
