@@ -25,6 +25,18 @@ public class Order
      */
     public void addItem(OrderLineItem item)
     {
+        var existingItem = shoppingCart.stream().filter(lineItem -> lineItem.getProduct().equalsIgnoreCase(item.getProduct())).findFirst();
+
+        if(existingItem.isPresent())
+        {
+            var currentItem = existingItem.get();
+            int newQuantity = currentItem.getQuantity() + item.getQuantity();
+            currentItem.setQuantity(newQuantity);
+        }
+        else
+        {
+            shoppingCart.add(item);
+        }
     }
 
     /*
@@ -33,6 +45,7 @@ public class Order
      */
     public void removeItem(OrderLineItem item)
     {
+        getShoppingCart().remove(item);
     }
 
     /*
@@ -43,7 +56,17 @@ public class Order
      */
     public OrderLineItem findHighestPriceProduct()
     {
-        return null;
+        var highestLineItem = getShoppingCart().getFirst();
+
+        for (var item : shoppingCart)
+        {
+            if (item.getPrice() > highestLineItem.getPrice())
+            {
+                highestLineItem = item;
+            }
+        }
+
+        return highestLineItem;
     }
 
     /*
@@ -54,7 +77,18 @@ public class Order
      */
     public OrderLineItem findMostExpensiveLineItem()
     {
-        return null;
+
+        var highestLineItem = getShoppingCart().getFirst();
+
+        for (var item : shoppingCart)
+        {
+            if (item.getLineTotal() > highestLineItem.getLineTotal())
+            {
+                highestLineItem = item;
+            }
+        }
+
+        return highestLineItem;
     }
 
     /*
@@ -62,7 +96,14 @@ public class Order
      */
     public double getOrderTotal()
     {
-        return 0;
+        double sum = 0.0;
+
+        for (var item : shoppingCart)
+        {
+            sum += item.getLineTotal();
+        }
+
+        return sum;
     }
 
     /*
@@ -70,7 +111,7 @@ public class Order
      */
     public int getTotalItemCount()
     {
-        return 0;
+        return getShoppingCart().size();
     }
 
     /*
@@ -78,6 +119,16 @@ public class Order
      */
     public double getAveragePricePerItem()
     {
-        return 0;
+        double sum = 0;
+        double quantity = 0;
+
+        for(var item : shoppingCart)
+        {
+            sum += item.getLineTotal();
+            quantity += item.getQuantity();
+        }
+
+
+        return sum / quantity;
     }
 }
