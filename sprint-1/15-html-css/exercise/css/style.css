@@ -233,7 +233,6 @@ nav {
     width: 100%;
     overflow-x: auto;
     box-sizing: border-box;
-    height: 100vh;
 }
 
 .hours-chalkboard,
@@ -313,11 +312,11 @@ h2 {
 }
 
 .footer-info-checkout{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        position: relative;
-        width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    width: 100%;
 }
 
 .chalk-text-second {
@@ -433,7 +432,7 @@ a {
     display: none;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
   .address{
     left: 39px;
     top: 20px;
@@ -446,6 +445,7 @@ a {
     align-items: center;
     padding-right: 35px;
     overflow: hidden;
+    height: 100%;
   }
 
   .footer-info{
@@ -464,7 +464,7 @@ a {
     width: 200px;
   }
 
-  .hours-chalkboard,
+.hours-chalkboard,
 .pizza-of-the-day-chalkboard,
 .welcome-chalkboard {
     margin: 5px 10px;
@@ -472,14 +472,22 @@ a {
 }
 }
 
-@media screen and (max-width: 1800px) {
+@media (min-width: 1250px) and (max-width: 3000px) {
 
 .addresses, .contact {
     padding-top: 20px;
 }
+
+.introduction{
+    height: 100vh;
 }
 
-@media screen and (max-width: 1400px) {
+.socials-footer{
+    padding-top: 50px;
+}
+}
+
+@media (screen) and (max-width: 1400px) {
     .logo{
         max-width: 100%;
     }
@@ -487,9 +495,11 @@ a {
     ul{
         max-width: 100%;
     }
+
+
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1250px) {
 
     .mobile {
         display: block;
@@ -506,6 +516,7 @@ a {
     .mobile-menu{
         display: block;
         padding-left: 30px;
+        padding-top: 5px;
     }
 
     header {
@@ -517,7 +528,11 @@ a {
     
     }
     .social-icons{
-        padding-bottom: 30px;
+        padding-bottom: 18px;
+    }
+
+    .socials-footer{
+        padding-left: 5px;
     }
 }
 @media screen and (max-width: 600px) {
@@ -531,5 +546,27 @@ a {
 }
 .mobile{
     height: 100px;
+}
+}
+
+@media screen and (max-width: 400px) {
+    .introduction {
+        background-image: url(https://cheeseboardcollective.coop/wp-content/themes/cheeseboard/images/chalkboard-background.jpg);
+        background-color: white;
+        background-repeat: repeat-x;
+        flex-wrap: nowrap;
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+        height: 100%;
+}
+
+.mobile-menu{
+    padding-top: 5px;
+    padding-left: 0;
+}
+
+.social-icons{
+    padding-right: 20px;
 }
 }
