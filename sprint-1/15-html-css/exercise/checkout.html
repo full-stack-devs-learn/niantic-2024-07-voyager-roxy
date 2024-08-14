@@ -13,7 +13,8 @@
                     <p>A worker owned co-op since 1971</p>
                 </div>
                 <div class="name">
-                    <img src="images/logo.jpg">
+                    <img class="mobile" src="images/img-logo-mobile.jpg">
+                    <img class="logo" src="images/logo.jpg">
                         <nav>
                             <ul>
                                 <a href="index.html"><li>Home</li></a>
@@ -29,29 +30,108 @@
                         </nav>
                 </div>
                 <div class="social-icons">
-                    <img class="social" src="images/icons8-instagram-64.png">
-                    <img class="social" src="images/icons8-facebook-60.png">
+                    <a href="https://www.instagram.com/cheeseboardcoll/"><img class="social" src="images/icons8-instagram-64.png"></a>
+                    <a href="https://www.facebook.com/cheeseboard/"><img class="social" src="images/icons8-facebook-60.png"></a>
+                </div>
+                <div class="mobile-menu">
+                    <img class="mobile-menu" src="images/icon-menu-mobile.gif">
                 </div>
         </div>
     </header>
 
     <div class="main-image">
-        <img class="address" src="images/anim_pizza_address.png">
-        <img class="music" src="images/anim_music_notes.gif">
-        <img class="dog" src="images/anim_dog.gif">
         <img class="hero" src="images/homepage_scene_bg.jpg">
         <img class="cow" src="images/anim_cow_running.gif">
     </div>
 
     <main>
-        <div class="introduction">
+        <div class="checkout-area">
             <img class="background" src="images/chalkboard-background.jpg">
             <h1 class="checkout-title">Checkout</h1>
+            <h2 class="contact-info">Contact Information</h2>
             <form class="order">
                 <label for="fname">First name:</label><br>
                 <input type="text" id="fname" name="fname"><br>
                 <label for="lname">Last name:</label><br>
                 <input type="text" id="lname" name="lname"><br>
+                <label for="lname">Address:</label><br>
+                <input type="text" id="address" name="address"><br>
+                <label for="lname">City:</label><br>
+                <input type="text" id="city" name="city"><br>
+                <label for="state">Select your state:</label>
+                <select name="state" id="state">
+                    <option value="AL">AL</option>
+                    <option value="AK">AK</option>
+                    <option value="AZ">AZ</option>
+                    <option value="AR">AR</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DE">DE</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="IA">IA</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="ME">ME</option>
+                    <option value="MD">MD</option>
+                    <option value="MA">MA</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MS">MS</option>
+                    <option value="MO">MO</option>
+                    <option value="MT">MT</option>
+                    <option value="NE">NE</option>
+                    <option value="NV">NV</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>
+                    <option value="NY">NY</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VT">VT</option>
+                    <option value="VA">VA</option>
+                    <option value="WA">WA</option>
+                    <option value="WV">WV</option>
+                    <option value="WI">WI</option>
+                    <option value="WY">WY</option>
+                </select><br>
+                <label for="lname">Zip Code:</label><br>
+                <input type="text" id="zip" name="zip"><br>
+                <h2 class="payment">Payment Information</h2>
+                <form class="payment-info">
+                    <label for="card">Select your card type:</label>
+                <select name="card" id="card">
+                    <option value="Mastercard">Mastercard</option>
+                    <option value="Visa">Visa</option>
+                    <option value="Discover">Discover</option>
+                    <option value="American Express">American Express</option>
+                </select><br>
+                <label for="card-number">Card Number:</label><br>
+                <input type="text" id="card-number" name="card-number"><br>
+                <label for="security">Security Code:</label><br>
+                <input type="text" id="security" name="security"><br>
+                <label for="expiration">Expiration Date:</label><br>
+                <input type="text" id="expiration" name="expiration"><br>
+                <input type="submit" value="submit">
+
+
+
             </form>
         </div>
 

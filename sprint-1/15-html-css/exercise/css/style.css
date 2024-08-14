@@ -4,6 +4,21 @@ body{
     margin: 0;
 }
 
+.checkout-title {
+    font-family: Prompt;
+}
+
+input, select {
+    margin: 10px;
+    font-size: 20px;
+    font-family: Prompt;
+}
+
+label {
+    font-size: 20px;
+    font-family: Prompt;
+}
+
 #header-content
 {
     text-transform: uppercase;
@@ -15,8 +30,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 50px;
-    flex-wrap: nowrap;
+    /* padding-right: 50px; */
+    /* flex-wrap: nowrap; */
 }
 
 .name {
@@ -88,17 +103,23 @@ nav {
 .addresses {
     width: 300px;
     float: left;
-    height: 146px;
-    padding-top: 36px;
+    /* height: 146px; */
+    /* padding-top: 36px; */
     box-sizing: border-box;
 }
 
 .contact {
     width: 242px;
     float: left;
-    height: 146px;
-    padding-top: 36px;
+    /* height: 146px; */
+    /* padding-top: 36px; */
     box-sizing: border-box;
+}
+
+.contact-info, .payment{
+    position: relative;
+    text-align: center;
+    font-family: Prompt;
 }
 
 .first-chalkboard {
@@ -165,6 +186,10 @@ nav {
     padding-left: 30px;
     padding-top: 10px;
     padding-right: 30px;
+}
+
+.mobile{
+    display: none;
 }
 
 .daily-picture {
@@ -289,7 +314,16 @@ h2 {
     justify-content: center;
     position: relative;
     margin-top: 400px;
-    margin-left: 675px;
+    width: 100%;
+}
+
+.footer-info-checkout{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+        /* margin-top: 400px; */
+        width: 100%;
 }
 
 .chalk-text-second {
@@ -354,6 +388,7 @@ h2 {
 
 header {
     height: 140px;
+    background-color: #c4f8fc;
 }
 
 
@@ -361,6 +396,7 @@ nav ul {
     margin: 0;
     padding: 0;
     height: 51px;
+    display: flex;
 }
 
 .footer-socials {
@@ -377,6 +413,10 @@ nav ul {
     font-weight: normal;
 }
 
+.label {
+    font-size: 30px;
+}
+
 a {
     text-decoration: none;
 }
@@ -384,41 +424,112 @@ a {
 .order {
     padding-top: 10px;
     position: relative;
+    text-align: center;
 }
 
 .checkout-title{
     text-align: center;
     font-size: 50px;
     position: relative;
+    margin: 0;
+}
+
+.mobile-menu{
+    display: none;
 }
 
 @media screen and (max-width: 1200px) {
   .address{
     left: 39px;
     top: 20px;
-    height: 80px;
+    /* height: 80px; */
     width: 200px;
   }
+  .introduction{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .footer-info{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-background
+{
+    height: 100%;
 }
 
-@media screen and (max-width: 100px) {
-    .address{
-      left: 60px;
-      top: 20px;
-      height: 50px;
-      width: 100px;
+  .address{
+    left: 39px;
+    top: 20px;
+    /* height: 80px; */
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 1800px) {
+
+.addresses, .contact {
+    padding-top: 20px;
+}
+}
+
+@media screen and (max-width: 1400px) {
+    .logo{
+        max-width: 100%;
     }
-  
-  }
 
-  /* @media screen and (max-width: 1500px) {
-    .address{
-      left: 90px;
-      top: 20px;
-      height: 100px;
-      width: 200px;
-    } */
-  
-  }
+    ul{
+        max-width: 100%;
+    }
+}
 
+@media screen and (max-width: 900px) {
+
+    .mobile {
+        display: block;
+        position: relative;
+        margin-bottom: 80px;
+    }
+    .logo{
+        display: none;
+    }
+    nav {
+        display: none;
+    }
+
+    .mobile-menu{
+        display: block;
+        padding-left: 30px;
+        /* padding-bottom: 30px; */
+    }
+
+    header {
+        height: 200px;
+    }
+
+    .tag{
+        display: none;
+    
+    }
+}
+@media screen and (max-width: 600px) {
+
+    .tag{
+        display: none;
+    }
+
+    header {
+        height: 200px;
+}
+    
+@media screen and (max-width: 500px) {
+
+    .tag{
+        display: none;
+    }
+    }
+
+}
