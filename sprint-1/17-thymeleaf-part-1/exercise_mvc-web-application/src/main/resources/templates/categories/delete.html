@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+<html lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>All Categories</title>
+    <title>Delete Category</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/united/bootstrap.min.css"
           integrity="sha512-bDf5pNGht0HBv1tNSyB06LQ4D+5IV4xpCmAFKORMIQi57c8mq96hg2Wa03//JNjHEjEai1qV+ZOUcwuy70j02A=="
@@ -15,31 +16,25 @@
 
 </head>
 <body>
-
 <div th:replace="fragments/header.html :: nav"></div>
-
 <main class="container mt-4">
-<h1>Categories</h1>
 
-    <a th:href="@{/categories/add}" class="btn btn-outline-secondary">New</a>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Category</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="category:${categories}">
-        <td th:text="${category.categoryId}"></td>
-        <td th:text="${category.categoryName}"></td>
-        <td>
-            <a th:href="@{|/categories/${category.categoryId}/edit|}" class="btn btn-outline-success">Edit</a>
-            <a th:href="@{|/categories/${category.categoryId}/delete|}" class="btn btn-outline-danger">Delete</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <h1>Delete Category</h1>
+
+    <h2>You are about to delete the following category.</h2>
+
+    <table class="table">
+        <tr><th>Id:</th> <td th:text="${category.categoryId}"></td></tr>
+        <tr><th>Category Name:</th> <td th:text="${category.categoryName}"></td></tr>
+        <tr><th>Description:</th> <td th:text="${category.description}"></td></tr>
+    </table>
+
+    <form method="post">
+        <input type="submit" class="btn btn-danger" value="Delete">
+        <a href="/" class="btn btn-secondary">Cancel</a>
+    </form>
+
 </main>
+
 </body>
 </html>

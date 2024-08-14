@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>All Categories</title>
+    <title th:if="${action} =='add'">Add Category</title>
+    <title th:if="${action} =='edit'">Edit Category</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/united/bootstrap.min.css"
           integrity="sha512-bDf5pNGht0HBv1tNSyB06LQ4D+5IV4xpCmAFKORMIQi57c8mq96hg2Wa03//JNjHEjEai1qV+ZOUcwuy70j02A=="
@@ -19,27 +20,22 @@
 <div th:replace="fragments/header.html :: nav"></div>
 
 <main class="container mt-4">
-<h1>Categories</h1>
+    <h1 th:if="${action} =='add'">Add Category</h1>
+    <h1 th:if="${action} =='edit'">Edit Category</h1>
 
-    <a th:href="@{/categories/add}" class="btn btn-outline-secondary">New</a>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Category</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="category:${categories}">
-        <td th:text="${category.categoryId}"></td>
-        <td th:text="${category.categoryName}"></td>
-        <td>
-            <a th:href="@{|/categories/${category.categoryId}/edit|}" class="btn btn-outline-success">Edit</a>
-            <a th:href="@{|/categories/${category.categoryId}/delete|}" class="btn btn-outline-danger">Delete</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <form action="#" th:object="${category}" method="post">
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{categoryName}">
+            <label th:for="*{categoryName}">Category Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{description}">
+            <label th:for="*{description}">Description</label>
+        </div>
+        <input class="btn btn-outline-danger" type="submit" value="Save">
+    </form>
+
+
 </main>
 </body>
 </html>
