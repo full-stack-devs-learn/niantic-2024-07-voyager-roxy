@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Delete Category</title>
+    <title>Delete Product</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/united/bootstrap.min.css"
           integrity="sha512-bDf5pNGht0HBv1tNSyB06LQ4D+5IV4xpCmAFKORMIQi57c8mq96hg2Wa03//JNjHEjEai1qV+ZOUcwuy70j02A=="
@@ -19,19 +19,24 @@
 <div th:replace="fragments/header.html :: nav"></div>
 <main class="container mt-4">
 
-    <h1>Delete Category</h1>
+    <h1>Delete Product</h1>
 
-    <h2>You are about to delete the following category.</h2>
+    <h2>You are about to delete the following product.</h2>
 
     <table class="table">
-        <tr><th>Id:</th> <td th:text="${category.categoryId}"></td></tr>
-        <tr><th>Category Name:</th> <td th:text="${category.categoryName}"></td></tr>
-        <tr><th>Description:</th> <td th:text="${category.description}"></td></tr>
+        <tr><th>Id:</th> <td th:text="${product.productId}"></td></tr>
+        <tr><th>Product Name:</th> <td th:text="${product.productName}"></td></tr>
+        <tr><th>Price:</th> <td th:text="${product.unitPrice}"></td></tr>
+        <tr><th>Quantity Per Unit:</th> <td th:text="${product.quantityPerUnit}"></td></tr>
+        <tr><th>Units In Stock:</th> <td th:text="${product.unitsInStock}"></td></tr>
+        <tr><th>Units On Order:</th> <td th:text="${product.unitsOnOrder}"></td></tr>
+        <tr><th>Reorder Level:</th> <td th:text="${product.reorderLevel}"></td></tr>
     </table>
 
-    <form method="post">
+    <form th:action="@{|/products/${product.productId}/delete|}" method="post">
+        <input type="hidden" name="catId" th:value="${product.categoryId}">
         <input type="submit" class="btn btn-danger" value="Delete">
-        <a th:href="@{/categories}" class="btn btn-secondary">Cancel</a>
+        <a th:href="@{|/products?catId=${product.categoryId}|}" class="btn btn-secondary">Cancel</a>
     </form>
 
 </main>

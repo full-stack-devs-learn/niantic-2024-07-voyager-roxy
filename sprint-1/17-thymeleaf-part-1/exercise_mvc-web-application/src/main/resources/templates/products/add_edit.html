@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title th:if="${action} =='add'">Add Product</title>
+    <title th:if="${action} =='edit'">Edit Product</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/united/bootstrap.min.css"
+          integrity="sha512-bDf5pNGht0HBv1tNSyB06LQ4D+5IV4xpCmAFKORMIQi57c8mq96hg2Wa03//JNjHEjEai1qV+ZOUcwuy70j02A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+<div th:replace="fragments/header.html :: nav"></div>
+
+<main class="container mt-4">
+    <h1 th:if="${action} =='add'">Add Product</h1>
+    <h1 th:if="${action} =='edit'">Edit Product</h1>
+
+    <form th:if="${action} == 'add'" th:action="@{|/products/add?catId=${catId}|}" th:object="${product}" method="post">
+        <input type="hidden" th:field="*{categoryId}" th:value="${catId}">
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{productName}">
+            <label th:for="*{productName}">Product Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{unitPrice}">
+            <label th:for="*{unitPrice}">Price</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{quantityPerUnit}">
+            <label th:for="*{quantityPerUnit}">Quantity Per Unit</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{unitsInStock}">
+            <label th:for="*{unitsInStock}">Units In Stock</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{unitsOnOrder}">
+            <label th:for="*{unitsOnOrder}">Units On Order</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{reorderLevel}">
+            <label th:for="*{reorderLevel}">Reorder Level</label>
+        </div>
+        <input class="btn btn-outline-danger" type="submit" value="Save">
+    </form>
+
+    <form th:if="${action} == 'edit'" th:action="@{|/products/${product.productId}/edit|}" th:object="${product}" method="post">
+        <input type="hidden" th:field="*{categoryId}" th:value="${catId}">
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{productName}">
+            <label th:for="*{productName}">Product Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{unitPrice}">
+            <label th:for="*{unitPrice}">Price</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{quantityPerUnit}">
+            <label th:for="*{quantityPerUnit}">Quantity Per Unit</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{unitsInStock}">
+            <label th:for="*{unitsInStock}">Units In Stock</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{unitsOnOrder}">
+            <label th:for="*{unitsOnOrder}">Units On Order</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{reorderLevel}">
+            <label th:for="*{reorderLevel}">Reorder Level</label>
+        </div>
+        <input class="btn btn-outline-danger" type="submit" value="Save">
+    </form>
+
+
+</main>
+</body>
+</html>

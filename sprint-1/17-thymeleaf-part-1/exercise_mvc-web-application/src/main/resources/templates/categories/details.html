@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>All Categories</title>
+    <title>Category Details</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/united/bootstrap.min.css"
           integrity="sha512-bDf5pNGht0HBv1tNSyB06LQ4D+5IV4xpCmAFKORMIQi57c8mq96hg2Wa03//JNjHEjEai1qV+ZOUcwuy70j02A=="
@@ -20,6 +20,10 @@
 <main class="container mt-4">
 
 <h4>Category Details</h4>
+    <div class="buttons" style="float: right; margin-bottom: 5px;">
+        <a th:href="@{|/categories/${category.categoryId}/edit|}" class="btn btn-outline-success">Edit</a>
+        <a th:href="@{|/categories/${category.categoryId}/delete|}" class="btn btn-outline-danger">Delete</a>
+    </div>
 <table class="table table-striped">
         <tr>
             <th><strong>ID</strong></th> <td><span th:text="${category.categoryId}"></span></td>

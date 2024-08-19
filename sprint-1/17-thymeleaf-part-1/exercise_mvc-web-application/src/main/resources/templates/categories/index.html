@@ -21,7 +21,7 @@
 <main class="container mt-4">
 <h1>Categories</h1>
 
-    <a th:href="@{/categories/add}" class="btn btn-outline-secondary">New</a>
+    <a th:href="@{/categories/add}" class="btn btn-outline-dark">New</a>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -32,11 +32,8 @@
     <tbody>
     <tr th:each="category:${categories}">
         <td th:text="${category.categoryId}"></td>
-        <td th:text="${category.categoryName}"></td>
-        <td>
-            <a th:href="@{|/categories/${category.categoryId}/edit|}" class="btn btn-outline-success">Edit</a>
-            <a th:href="@{|/categories/${category.categoryId}/delete|}" class="btn btn-outline-danger">Delete</a>
-        </td>
+        <td><a th:href="@{|/categories/${category.categoryId}|}" th:text="${category.categoryName}|"></a></td>
+        <td><a th:href="@{|/products?catId=${category.categoryId}|}" class="btn btn-outline-info">Products</a></td>
     </tr>
     </tbody>
 </table>

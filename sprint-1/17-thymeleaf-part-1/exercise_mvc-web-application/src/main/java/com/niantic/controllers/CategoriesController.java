@@ -88,8 +88,4 @@ public class CategoriesController
 
         return "redirect:/categories";
     }
-
-
-
-
 }

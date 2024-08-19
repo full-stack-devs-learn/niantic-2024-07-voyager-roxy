@@ -102,7 +102,9 @@ public class ProductDao
     public void addProduct(Product product)
     {
         String sql = """
-                INSERT INTO products (product_name, category_id, quantity_per_unit, unit_price, units_in_stock, units_on_order, reorder_level)
+                INSERT INTO products
+                (product_name, category_id, quantity_per_unit,
+                unit_price, units_in_stock, units_on_order, reorder_level)
                 VALUES (?, ?, ?, ?, ?, ?, ?);
                 """;
 
