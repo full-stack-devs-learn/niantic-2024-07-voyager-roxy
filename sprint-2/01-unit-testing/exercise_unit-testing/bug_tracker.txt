@@ -6,32 +6,37 @@ Class: Rectangle
 
         Describe the bug/error:
 
+            The getPerimeter method is only returning the
+            width + height instead of 2(width) + 2(height).
+
         Where was the bug? (function, line number)
+
+            getPerimeter method - line 52.
 
         What test helped you find the bug?
 
+            perimeterOfRectangle_shouldBeCalculatedCorrectly()
+
         What did you do to fix the bug?
+
+            Change the return to (2 * width) + (2 * height).
 
     Bug 2:
 
         Describe the bug/error:
 
-        Where was the bug? (function, line number)
-
-        What test helped you find the bug?
-
-        What did you do to fix the bug?
-
-    Bug 3:
-
-        Describe the bug/error:
+            Negative values for width or height don't return 0.
 
         Where was the bug? (function, line number)
 
+            getArea method -  line 40
         What test helped you find the bug?
+
+            widthOrHeightZero_mustReturnAreaZero()
 
         What did you do to fix the bug?
 
+            added if statement to return 0 if width or height is <=0.
 
 
 
@@ -41,21 +46,41 @@ Class: Quiz
 
         Describe the bug/error:
 
+            getPercentage returns 0 instead of the percentage
+
         Where was the bug? (function, line number)
+
+            the return statements of the getPercent method - line - 37
 
         What test helped you find the bug?
 
+            etPercentage_calculatesCorrectInteger_usingScoreAndPossiblePoints()
+
         What did you do to fix the bug?
+
+            change the return statement so that the division of the score and possible
+            points is a double / int and then convert that to an integer
+
 
     Bug 2:
 
         Describe the bug/error:
 
+            letter grade is not including minimum border for grade
+            also grading scale is wrong/missing the 60 values
+
         Where was the bug? (function, line number)
+
+            getLetterGrade method - line 40
 
         What test helped you find the bug?
 
+            getLetterGrade_ReturnsCorrectLetterGrade_basedOnQuizPercent()
+
         What did you do to fix the bug?
+
+            added >= for each condition
+            and fixed grading scale
 
 
 *** Optional / Challenge ***
