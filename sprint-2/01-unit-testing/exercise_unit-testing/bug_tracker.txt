@@ -93,22 +93,38 @@ Class: GameCharacter
 
         Describe the bug/error:
 
+            starting energy level was 0
+
         Where was the bug? (function, line number)
+
+            line 29 of game constructor
 
         What test helped you find the bug?
 
+            takeHit(int damage) should reduce the energy level by the amount of damage specified
+
         What did you do to fix the bug?
+
+            set energyLevel to maxEnergyLevel when there
+            is new instance of GameCharacter
 
     Bug 2:
 
         Describe the bug/error:
 
+            should not be able to heal if knocked out
+
         Where was the bug? (function, line number)
+
+            heal method - line 37
 
         What test helped you find the bug?
 
+            If the energyLevel reaches 0 the character is knocked out and cannot heal anymore.
+
         What did you do to fix the bug?
 
+            added conditional statement for energy level = 0
 
 
 
