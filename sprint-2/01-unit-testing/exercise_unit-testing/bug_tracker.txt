@@ -160,4 +160,9 @@ Class: Printer
 
         What test helped you find the bug?
 
+            replaceToner_shouldBeResetToMaxCapacity()
+
         What did you do to fix the bug?
+
+            change to this.toner = MAX_TONER;
+
