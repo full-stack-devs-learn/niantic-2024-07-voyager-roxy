@@ -18,7 +18,13 @@ public class Maps
      */
     public List<String> mapCompanyNames(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var companyNames = lineItems.stream()
+                .map(lineItem -> lineItem.getCompanyName())
+                .distinct()
+                .sorted()
+                .toList();
+
+        return companyNames;
     }
 
     /*
@@ -31,7 +37,13 @@ public class Maps
      */
     public List<String> mapCategories(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var categoryNames = lineItems.stream()
+                .map(lineItem -> lineItem.getCategoryName())
+                .distinct()
+                .sorted()
+                .toList();
+
+        return categoryNames;
     }
 
     /*
@@ -44,7 +56,13 @@ public class Maps
      */
     public List<String> mapProducts(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var productNames = lineItems.stream()
+                .map(lineItem -> lineItem.getProductName())
+                .distinct()
+                .sorted()
+                .toList();
+
+        return productNames;
     }
 
     /*
@@ -57,7 +75,14 @@ public class Maps
      */
     public List<String> mapYears(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var orderYear = lineItems.stream()
+                .map(lineItem -> lineItem.getOrderDate().getYear())
+                .distinct()
+                .sorted()
+                .map(year -> String.valueOf(year))
+                .toList();
+
+        return orderYear;
     }
 
     /*
@@ -70,6 +95,13 @@ public class Maps
      */
     public List<String> mapOrderIds(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var orderId = lineItems.stream()
+                .map(lineItem -> lineItem.getOrderId())
+                .distinct()
+                .sorted()
+                .map(order -> String.valueOf(order))
+                .toList();
+
+        return orderId;
     }
 }

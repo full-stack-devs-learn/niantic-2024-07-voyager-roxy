@@ -16,7 +16,11 @@ public class Reducers
      */
     public double totalSales(List<LineItem> lineItems)
     {
-        return 0;
+        var sumOfSales = lineItems.stream()
+                .map(lineItem -> lineItem.getLineTotal())
+                .reduce(0.0, (sum, sale) -> sum + sale);
+
+        return sumOfSales;
     }
 
     /*
@@ -26,7 +30,11 @@ public class Reducers
      */
     public double averageSalesPerLineItem(List<LineItem> lineItems)
     {
-        return 0;
+        var sumOfSales = lineItems.stream()
+                .map(lineItem -> lineItem.getLineTotal())
+                .reduce(0.0, (sum, sale) -> sum + sale);
+
+        return sumOfSales / lineItems.size();
     }
 
     /*
@@ -40,7 +48,15 @@ public class Reducers
      */
     public double averageSalesPerItem(List<LineItem> lineItems)
     {
-        return 0;
+        var itemPrice = lineItems.stream()
+                .map(lineItem -> lineItem.getUnitPrice() * lineItem.getQuantity())
+                .reduce(0.0, (sum, next) -> sum + next);
+
+        var itemQuantity = lineItems.stream()
+                .map(lineItem -> lineItem.getQuantity())
+                .reduce(0, (sum, next) -> sum + next);
+
+        return itemPrice / itemQuantity;
     }
 
     /*
@@ -52,7 +68,11 @@ public class Reducers
      */
     public int totalItemCount(List<LineItem> lineItems)
     {
-        return 0;
+        var totalItems = lineItems.stream()
+                .map(lineItem -> lineItem.getQuantity())
+                .reduce(0, (sum, next) -> sum + next);
+
+        return totalItems;
     }
 
     /*
@@ -62,7 +82,11 @@ public class Reducers
      */
     public double averageItemCount(List<LineItem> lineItems)
     {
-        return 0;
+        var items = lineItems.stream()
+                .map(lineItem -> lineItem.getQuantity())
+                .reduce(0, (sum, next) -> sum + next);
+
+        return (double) items / lineItems.size();
     }
 
     /*
@@ -71,7 +95,11 @@ public class Reducers
      */
     public double maxLineItem(List<LineItem> lineItems)
     {
-        return 0;
+        var mostExpensive = lineItems.stream()
+                .map(lineItem -> lineItem.getLineTotal())
+                .reduce(lineItems.getFirst().getLineTotal(), (currentHighest, nextItem) -> currentHighest > nextItem ? currentHighest : nextItem);
+
+        return mostExpensive;
     }
 
     /*
@@ -82,7 +110,10 @@ public class Reducers
      */
     public double minLineItem(List<LineItem> lineItems)
     {
-        return 0;
-    }
+        var leastExpensive = lineItems.stream()
+                .map(lineItem -> lineItem.getLineTotal())
+                .reduce(lineItems.getFirst().getLineTotal(), (currentLowest, nextItem) -> currentLowest < nextItem ? currentLowest : nextItem);
 
+        return leastExpensive;
+    }
 }
