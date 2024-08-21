@@ -133,18 +133,30 @@ Class: Printer
     Bug 1:
 
         Describe the bug/error:
+            should not be able to negative amounts of paper
 
         Where was the bug? (function, line number)
 
+            print method
+
         What test helped you find the bug?
 
+            It should not be possible to print a negative amount of copies.
+            If a negative number is requested 0 copies should be printed.
+
         What did you do to fix the bug?
+
+            add conditional statement for negative copies to return 0
 
     Bug 2:
 
         Describe the bug/error:
 
+            toner not reset to max capacity
+
         Where was the bug? (function, line number)
+
+            replaceToner method - line 55
 
         What test helped you find the bug?
 
