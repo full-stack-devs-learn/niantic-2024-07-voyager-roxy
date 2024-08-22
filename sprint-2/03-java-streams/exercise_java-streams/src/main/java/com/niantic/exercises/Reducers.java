@@ -48,15 +48,19 @@ public class Reducers
      */
     public double averageSalesPerItem(List<LineItem> lineItems)
     {
-        var itemPrice = lineItems.stream()
-                .map(lineItem -> lineItem.getUnitPrice() * lineItem.getQuantity())
-                .reduce(0.0, (sum, next) -> sum + next);
-
-        var itemQuantity = lineItems.stream()
-                .map(lineItem -> lineItem.getQuantity())
-                .reduce(0, (sum, next) -> sum + next);
-
-        return itemPrice / itemQuantity;
+//longer version using 2 streams
+//        var itemPrice = lineItems.stream()
+//                .map(lineItem -> lineItem.getUnitPrice() * lineItem.getQuantity())
+//                .reduce(0.0, (sum, next) -> sum + next);
+//
+//        var itemQuantity = lineItems.stream()
+//                .map(lineItem -> lineItem.getQuantity())
+//                .reduce(0, (sum, next) -> sum + next);
+//
+//        return itemPrice / itemQuantity;
+//
+// shorter version using previously defined streams
+        return totalSales(lineItems) / totalItemCount(lineItems);
     }
 
     /*
