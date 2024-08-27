@@ -2,5 +2,9 @@
 
 -- (1 row)
 
+USE northwind;
+
+SELECT MAX(unit_price)
+FROM products;
 
 

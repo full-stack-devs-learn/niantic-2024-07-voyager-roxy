@@ -13,5 +13,16 @@
 -- Order the results by line_total, highest first.
 -- (10 rows)
 
+USE northwind;
+
+SELECT product_name
+        , sales_price
+        , quantity
+        , sales_price * quantity as sub_total
+        , sales_price * quantity * discount as total_discount 
+        , (sales_price * quantity) - discount as line_total 
+FROM customer_orders
+ORDER BY line_total DESC
+LIMIT 10;
 
 

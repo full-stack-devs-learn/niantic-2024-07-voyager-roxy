@@ -14,3 +14,14 @@
 -- (8 rows)
 
 
+USE northwind;
+
+SELECT product_name
+        , sales_price
+        , quantity
+        , sales_price * quantity as sub_total
+        , sales_price * quantity * discount as total_discount 
+        , (sales_price * quantity) - discount as line_total 
+FROM customer_orders
+HAVING total_discount > 1000
+ORDER BY total_discount DESC;

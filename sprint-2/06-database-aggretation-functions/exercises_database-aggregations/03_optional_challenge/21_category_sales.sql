@@ -14,8 +14,14 @@
 
 -- (3 rows)
 
+USE northwind;
 
-
-
-
-
+SELECT category_name as ParentCategory
+	, SUM(quantity) as QuantityPurchased
+    , COUNT(DISTINCT order_id) as OrdersPlaced
+FROM customer_orders
+GROUP BY ParentCategory
+ORDER BY OrdersPlaced DESC
+    , SUM(quantity) DESC
+    , ParentCategory
+LIMIT 3;

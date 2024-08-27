@@ -5,5 +5,10 @@
 -- (21 rows)
 
 
+USE northwind;
 
+SELECT country
+	, COUNT(DISTINCT customer_id)
+FROM customers
+GROUP BY country;
 

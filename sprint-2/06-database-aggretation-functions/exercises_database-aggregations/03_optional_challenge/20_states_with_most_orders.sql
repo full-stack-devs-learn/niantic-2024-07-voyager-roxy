@@ -7,7 +7,15 @@
 -- (1 rows)
 -- SP   49
 
+USE northwind;
 
+SELECT region
+    , COUNT(DISTINCT order_id) as order_count
+FROM customer_orders
+WHERE region IS NOT NULL
+GROUP BY region
+ORDER BY order_count DESC
+LIMIT 1;
 
 
 

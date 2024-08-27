@@ -5,7 +5,16 @@
 
 -- (6 rows)
 
+USE northwind;
 
+SELECT company_name
+	, region
+    , SUM(sales_price * quantity) as total_sales
+FROM customer_orders
+WHERE region IS NOT NULL and country = 'USA'
+GROUP BY company_name, region
+HAVING SUM(sales_price * quantity) > 10000
+ORDER BY SUM(sales_price * quantity) DESC;
 
 
 
