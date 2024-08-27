@@ -9,5 +9,12 @@
 
 USE sakila;
 
-
+SELECT f.title
+	, COUNT(r.rental_id) AS times_rented
+FROM film AS f
+INNER JOIN inventory AS i ON f.film_id = i.film_id
+INNER JOIN rental AS r on i.inventory_id = r.inventory_id
+GROUP BY f.title
+ORDER BY times_rented
+LIMIT 20;
 

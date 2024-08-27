@@ -11,5 +11,8 @@
 
 USE northwind;
 
-
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS employee_full_name
+	, COALESCE(CONCAT(m.first_name, ' ', m.last_name), 'Boss Man') AS manager_full_name
+FROM employees AS e
+LEFT OUTER JOIN employees AS m ON e.reports_to = m.employee_id;
 
