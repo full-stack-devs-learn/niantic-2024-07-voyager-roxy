@@ -22,3 +22,14 @@
 
 USE northwind;
 
+SELECT product_name
+	, unit_price
+    , CASE 
+		WHEN unit_price > 100 THEN '$$$$$'
+        WHEN unit_price > 50 THEN '$$$$'
+        WHEN unit_price > 25 THEN '$$$'
+        WHEN unit_price > 10 THEN '$$'
+        WHEN unit_price > 0 THEN '$'
+	END AS price_range
+FROM products AS p;
+        

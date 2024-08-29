@@ -23,4 +23,14 @@
 
 USE northwind;
 
-
+SELECT (SELECT category_name
+    FROM categories AS c
+    WHERE p2.category_id = c.category_id) category_name
+	, p2.product_name
+	, p2.unit_price    
+FROM products AS p2
+WHERE p2.unit_price = (SELECT MAX(p1.unit_price)
+    FROM products AS p1
+    WHERE p1.category_id = p2.category_id)
+ORDER BY category_name
+;
