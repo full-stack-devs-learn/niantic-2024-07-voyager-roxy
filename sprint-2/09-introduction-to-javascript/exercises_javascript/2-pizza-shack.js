@@ -181,11 +181,7 @@ function createOrder(customer, pizza1, pizza2, pizza3, pizza4, pizza5)
 	{
 		pizzas.push({
 			name: "Hawaiian"
-			, toppings: [
-				"Ham",
-				"Pineapple",
-				"Mushroom"
-			]
+			, toppings: ["Ham", "Pineapple", "Mushroom"]
 		});
 	}
 	if (pizza2 === true)
@@ -201,13 +197,7 @@ function createOrder(customer, pizza1, pizza2, pizza3, pizza4, pizza5)
 	{
 		pizzas.push({
 			name: "Supreme"
-			, toppings: [
-				"Pepperoni", 
-				"Sausage", 
-				"Pepper", 
-				"Onion", 
-				"Black Olives"
-			]
+			, toppings: ["Pepperoni", "Sausage", "Pepper", "Onion", "Black Olives"]
 		});
 	}
 
