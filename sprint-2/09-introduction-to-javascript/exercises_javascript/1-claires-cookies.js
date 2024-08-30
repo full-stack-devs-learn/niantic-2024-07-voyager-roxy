@@ -16,7 +16,8 @@
 
 function calculateOrderSubtotal(quantity)
 {
-	return 0;
+	const dozenPrice = 12.95
+	return dozenPrice * quantity;
 }
 
 
@@ -40,7 +41,11 @@ function calculateOrderSubtotal(quantity)
 
 function calculateTax(quantity)
 {
-	return 0;
+	const taxRate = 0.0575;
+
+	const taxAmount = Math.round((calculateOrderSubtotal(quantity) * taxRate) * 100) / 100;
+	
+	return taxAmount;
 }
 
 
@@ -64,6 +69,11 @@ function calculateTax(quantity)
 */
 
 // create your function here
+function calculateOrderTotal(quantity)
+{
+	const total = calculateOrderSubtotal(quantity) + (calculateTax(quantity));
+	return Math.round(total * 100) / 100;
+}
 
 
 /*
@@ -106,7 +116,22 @@ function calculateTax(quantity)
 */
 
 // create your function here
+function placeOrder(customer, quantity)
+{
+	const total = calculateOrderTotal;
+	const tax = calculateTax;
+	
+	const receipt = { customer : 'Sean',
+	quantity : quantity,
+	subtotal: calculateOrderSubtotal(quantity),
+	tax : calculateTax(quantity),
+	total: calculateOrderTotal(quantity) };
 
+	console.log(receipt);
+
+	return receipt;
+
+}
 
 /*
 5.	Sean's classes have all earned a cookie party. 
@@ -128,3 +153,15 @@ function calculateTax(quantity)
 */
 
 // create your function here
+function calculateCookiesNeeded(a, b, c)
+{
+	const aCookies = a * 4;
+	const bCookies = b * 3;
+	const cCookies = c * 2;
+
+	const totalCookies = aCookies + bCookies + cCookies;
+
+	const totalDozens = totalCookies / 12;
+
+	return Math.ceil(totalDozens);
+}

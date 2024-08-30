@@ -13,6 +13,32 @@
 
 */
 
+function getToppings(type)
+{
+	if (type.toLowerCase() == 'hawaiian')
+	{
+		return ["Ham","Pineapple","Mushroom"];
+	}
+	if (type.toLowerCase() == 'cowboy')
+	{
+		return ["Pepperoni", "Sausage", "Beef"];
+	}
+	if (type.toLowerCase() == 'supreme')
+	{
+		return ["Pepperoni", "Sausage", "Pepper", "Onion", "Black Olives"];
+	}
+	if (type.toLowerCase() == 'vegetarian')
+	{
+		return ["Spinach", "Zucchini", "Mushroom", "Artichoke", "Tomato", "Onion"];
+	}
+	if (type.toLowerCase() == 'cheese')
+	{
+		return ['Cheese'];
+	}
+	else {
+		return []
+	}
+}
 
 
 
@@ -30,7 +56,22 @@
 
 */
 
+function makePizza(type)
+{
 
+	if (getToppings(type).length === 0)
+		{
+			return {}
+		}
+	
+		const pizza = {
+			name: type,
+			toppings: getToppings(type)
+		}
+
+	return pizza;
+	
+}
 
 
 /*
@@ -64,7 +105,25 @@
 
 */
 
+function makeCustom(topping1, topping2, topping3)
+{
+	const toppings = [topping1, topping2, topping3].filter(topping => topping != undefined);
+	
+	if (toppings.length === 0)
+		{
+			return {}
+		}
 
+	const pizza = {
+		name: "Custom",
+		toppings: toppings
+	}
+
+	console.log(pizza)
+	console.log(arguments)
+	
+	return pizza;
+}
 
 
 /*
@@ -114,3 +173,71 @@
 
 */
 
+function createOrder(customer, pizza1, pizza2, pizza3, pizza4, pizza5)
+{
+	const pizzas = [];
+
+	if (pizza1 === true)
+	{
+		pizzas.push({
+			name: "Hawaiian"
+			, toppings: [
+				"Ham",
+				"Pineapple",
+				"Mushroom"
+			]
+		});
+	}
+	if (pizza2 === true)
+	{
+		pizzas.push({
+			name: 'Cowboy'
+		, toppings: ["Pepperoni", "Sausage", "Beef"]
+	});
+	
+	}
+
+	if (pizza3 === true)
+	{
+		pizzas.push({
+			name: "Supreme"
+			, toppings: [
+				"Pepperoni", 
+				"Sausage", 
+				"Pepper", 
+				"Onion", 
+				"Black Olives"
+			]
+		});
+	}
+
+	if (pizza4 === true)
+		{
+			pizzas.push({
+				name: 'Vegetarian'
+			, toppings: ["Spinach", "Zucchini", "Mushroom", "Artichoke", "Tomato", "Onion"]
+		});
+		}
+
+	if (pizza5 === true)
+	{
+		pizzas.push({
+			name: 'Cheese'
+		, toppings: ["Cheese"]
+	});
+	}
+
+	if (pizzas.length === 0)
+		{
+			return {};
+		}
+
+
+	const order = {
+		customer: "Gary",
+		pizzas: pizzas
+	};
+
+	console.log("order", order)
+	return order;
+}
