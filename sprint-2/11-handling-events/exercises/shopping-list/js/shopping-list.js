@@ -75,14 +75,15 @@ function markIndividualItem()
 
     listItems.forEach(item => {
         item.addEventListener('click', () => {
-            if(item.classList.contains("complete")){
-                item.classList.remove("complete")
-            }
-            else
-            (
+                if(!item.classList.contains("complete")){
                 item.classList.add("complete")
-            )
+                }
         });
+        item.addEventListener('dblclick', () => {
+            if(item.classList.contains("complete")){
+            item.classList.remove("complete")
+            }
+    });
     })
 }
 
