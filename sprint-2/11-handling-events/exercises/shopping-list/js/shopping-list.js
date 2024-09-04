@@ -30,7 +30,9 @@ function addListItem(item, parent)
     addItemTitle(item, div);
     addQuantity(item, div)
 
-    parent.appendChild(div)
+    parent.appendChild(div);
+
+    markIndividualItem();
 }
 
 function addItemTitle(item, parent)
