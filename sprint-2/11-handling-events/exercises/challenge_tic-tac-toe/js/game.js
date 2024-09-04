@@ -51,7 +51,7 @@ function init()
 
 function reset()
 {
-    const btns = document.querySelectorAll(".btn-secondary ")
+    const btns = document.querySelectorAll(".btn-secondary")
 
     btns.forEach(btn => {
         btn.textContent = "";
