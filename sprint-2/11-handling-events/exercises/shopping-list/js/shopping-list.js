@@ -109,6 +109,12 @@ function submitItem(event)
 {
     event.preventDefault();
 
+    const itemInput = document.getElementById("itemName");
+    const quantityInput = document.getElementById("quantity");
+
+    if(itemInput.validity.valid && quantityInput.validity.valid)
+    {
+
     const itemName = document.getElementById("itemName").value;
     const quantity = document.getElementById("quantity").value;
 
@@ -124,6 +130,7 @@ function submitItem(event)
     addListItem(grocery, parent);
 
     clearForm();
+}
 }
 
 function clearForm()
