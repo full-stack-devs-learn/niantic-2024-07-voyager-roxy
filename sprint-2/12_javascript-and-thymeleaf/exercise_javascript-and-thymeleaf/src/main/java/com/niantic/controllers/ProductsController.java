@@ -20,14 +20,22 @@ public class ProductsController
     @GetMapping( "/products")
     public String products(Model model, @RequestParam(defaultValue = "1") int catId)
     {
-        var products = productDao.getProductsByCategory(catId);
         var category = categoryDao.getCategoryById(catId);
         var categories = categoryDao.getCategories();
 
         model.addAttribute("categories", categories);
         model.addAttribute("currentCategory", category);
-        model.addAttribute("products", products);
+
         return "products/index";
+    }
+
+    @GetMapping("/products/category/{catId}")
+    public String getProducts(Model model, @PathVariable int catId)
+    {
+        var products = productDao.getProductsByCategory(catId);
+
+        model.addAttribute("products", products);
+        return "/fragments/product-table-list";
     }
 
     // details page
