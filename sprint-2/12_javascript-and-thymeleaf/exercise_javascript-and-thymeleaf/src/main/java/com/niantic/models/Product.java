@@ -1,10 +1,13 @@
 package com.niantic.models;
+import jakarta.validation.constraints.NotEmpty;
 
 public class Product
 {
     private int productId;
     private int categoryId;
+    @NotEmpty(message="Product Name is required")
     private String productName;
+    @NotEmpty(message="Quantity is required")
     private String quantityPerUnit;
     private double unitPrice;
     private int unitsInStock;

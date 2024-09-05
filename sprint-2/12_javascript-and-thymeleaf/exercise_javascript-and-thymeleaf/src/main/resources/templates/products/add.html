@@ -20,7 +20,7 @@
     <form action="#" th:action="@{/products/new}" th:object="${product}" method="post">
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{productName}">Product Name</label>
-            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{productName}" placeholder="Product Name" required></div>
+            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{productName}" placeholder="Product Name" ></div>
         </div>
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{categoryId}">Category Id</label>
@@ -33,7 +33,7 @@
         </div>
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{quantityPerUnit}">Quantity Per Unit</label>
-            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{quantityPerUnit}" placeholder="Quantity Per Unit" required></div>
+            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{quantityPerUnit}" placeholder="Quantity Per Unit" ></div>
         </div>
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{unitPrice}">Unit Price</label>

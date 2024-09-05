@@ -4,8 +4,10 @@ import com.niantic.models.Category;
 import com.niantic.models.Product;
 import com.niantic.services.CategoryDao;
 import com.niantic.services.ProductDao;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -67,10 +69,15 @@ public class ProductsController
     }
 
     @PostMapping("/products/new")
-    public String saveProduct(@ModelAttribute("product") Product product)
+    public String saveProduct(Model model, @Valid @ModelAttribute("product") Product product, BindingResult result)
     {
+        if(result.hasErrors())
+        {
+            return "products/add";
+        }
 
         productDao.addProduct(product);
+        model.addAttribute("product", product);
         return "redirect:/products?catId=" + product.getCategoryId();
     }
 
