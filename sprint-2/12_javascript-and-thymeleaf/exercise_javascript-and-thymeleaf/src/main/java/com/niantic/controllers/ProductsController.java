@@ -73,6 +73,8 @@ public class ProductsController
     {
         if(result.hasErrors())
         {
+           model.addAttribute("isInvalid", true);
+           model.addAttribute("categories", categoryDao.getCategories());
             return "products/add";
         }
 

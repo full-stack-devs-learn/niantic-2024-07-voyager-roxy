@@ -17,10 +17,11 @@
 <main class="container mt-4">
     <h4>Add Product</h4>
 
-    <form action="#" th:action="@{/products/new}" th:object="${product}" method="post">
+    <form action="#" th:action="@{/products/new}" th:object="${product}" method="post" th:class="${isInvalid} ? 'was-validated': ''" novalidate>
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{productName}">Product Name</label>
-            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{productName}" placeholder="Product Name" ></div>
+            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{productName}" placeholder="Product Name" required>
+            <div class="invalid-feedback">Enter a product name.</div> </div>
         </div>
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{categoryId}">Category Id</label>
@@ -33,23 +34,28 @@
         </div>
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{quantityPerUnit}">Quantity Per Unit</label>
-            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{quantityPerUnit}" placeholder="Quantity Per Unit" ></div>
+            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{quantityPerUnit}" placeholder="Quantity Per Unit" required>
+                <div class="invalid-feedback">Enter a quantity.</div> </div>
         </div>
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{unitPrice}">Unit Price</label>
-            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{unitPrice}" placeholder="Unit Price" required></div>
+            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{unitPrice}" placeholder="Unit Price" required>
+                <div class="invalid-feedback">Enter a unit price.</div> </div>
         </div>
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{unitsInStock}">Units In Stock</label>
-            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{unitsInStock}" placeholder="Units In Stock" required></div>
+            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{unitsInStock}" placeholder="Units In Stock" required>
+                <div class="invalid-feedback">Enter units in stock.</div> </div>
         </div>
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{unitsOnOrder}">Units On Order</label>
-            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{unitsOnOrder}" placeholder="Units On Order" required></div>
+            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{unitsOnOrder}" placeholder="Units On Order" required>
+                <div class="invalid-feedback">Enter units on order.</div> </div>
         </div>
         <div class="row">
             <label class="col-sm-2 col-form-label" th:for="*{reorderLevel}">Reorder Level</label>
-            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{reorderLevel}" placeholder="Reorder Level" required></div>
+            <div class="col-sm-10"><input type="text" class="form-control" th:field="*{reorderLevel}" placeholder="Reorder Level" required>
+                <div class="invalid-feedback">Enter reorder level.</div> </div>
         </div>
         <div>
             <button type="submit" class="btn btn-success">Save Product</button>
