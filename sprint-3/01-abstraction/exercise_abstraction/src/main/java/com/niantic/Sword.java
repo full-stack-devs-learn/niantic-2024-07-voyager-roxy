@@ -16,7 +16,7 @@ public class Sword extends Weapon
         else {
             setPercentCharged(100);
         }
-        return getPercentCharged();
+        return getDamage();
     }
 
     @Override
