@@ -78,7 +78,9 @@ public class GradingApplication implements Runnable
             if(fileName.contains(stringNumber))
             {
                 List<Assignment> assignments = gradesService.getAssignments(fileName);
-                System.out.println("Student: " + assignments.getFirst().getFirstName() + " " + assignments.getFirst().getLastName());
+                System.out.println("Student: " + assignments.getFirst().getFirstName().substring(0,1).toUpperCase() +
+                        assignments.getFirst().getFirstName().substring(1) + " " +
+                        assignments.getFirst().getLastName().substring(0,1).toUpperCase() + assignments.getFirst().getLastName().substring(1));
                 for (Assignment assignment : assignments)
                 {
                     System.out.println(assignment.getAssignmentName());
@@ -93,7 +95,31 @@ public class GradingApplication implements Runnable
     {
         // todo: 3 - allow the user to select a file name
         // load all student assignment scores from the file - display student statistics (low score, high score, average score)
+        File file = new File("files");
 
+        String [] files = file.list();
+
+        for(String fileName : files)
+        {
+            System.out.println(fileName);
+        }
+
+        int choice = UserInput.fileSelection();
+        String stringNumber = String.valueOf(choice);
+
+        for(String fileName : files)
+        {
+            if(fileName.contains(stringNumber))
+            {
+                List<Assignment> assignments = gradesService.getAssignments(fileName);
+                System.out.println("Student: " + assignments.getFirst().getFirstName().substring(0,1).toUpperCase() +
+                        assignments.getFirst().getFirstName().substring(1) + " " +
+                        assignments.getFirst().getLastName().substring(0,1).toUpperCase() + assignments.getFirst().getLastName().substring(1));
+                System.out.println("Low Score: " + assignments.stream().mapToInt(Assignment::getScore).min().orElse(-1));
+                System.out.println("High Score: " + assignments.stream().mapToInt(Assignment::getScore).max().orElse(-1));
+                System.out.println("Average Score: " + assignments.stream().mapToInt(Assignment::getScore).average().orElse(-1));
+            }
+        }
 
     }
 
