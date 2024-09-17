@@ -3,9 +3,7 @@ package com.niantic.services;
 import com.niantic.models.Assignment;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class GradesFileService implements GradesService
 {
@@ -13,7 +11,9 @@ public class GradesFileService implements GradesService
     @Override
     public String[] getFileNames()
     {
-        return null;
+        File file = new File("files");
+
+        return file.list();
     }
 
     @Override
@@ -65,4 +65,6 @@ public class GradesFileService implements GradesService
 
         return allAssignments;
     }
+
+
 }
