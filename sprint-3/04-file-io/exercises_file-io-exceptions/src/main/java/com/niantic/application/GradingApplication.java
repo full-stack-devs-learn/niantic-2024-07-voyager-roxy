@@ -5,7 +5,10 @@ import com.niantic.services.GradesFileService;
 import com.niantic.services.GradesService;
 import com.niantic.ui.UserInput;
 
+import java.io.DataOutput;
 import java.io.File;
+import java.util.List;
+import java.util.Scanner;
 
 public class GradingApplication implements Runnable
 {
@@ -58,6 +61,31 @@ public class GradingApplication implements Runnable
     {
         // todo: 2 - allow the user to select a file name
         // load all student assignment scores from the file - display all files
+        File file = new File("files");
+
+        String [] files = file.list();
+
+        for(String fileName : files)
+        {
+            System.out.println(fileName);
+        }
+
+        int choice = UserInput.fileSelection();
+        String stringNumber = String.valueOf(choice);
+
+        for(String fileName : files)
+        {
+            if(fileName.contains(stringNumber))
+            {
+                List<Assignment> assignments = gradesService.getAssignments(fileName);
+                System.out.println("Student: " + assignments.getFirst().getFirstName() + " " + assignments.getFirst().getLastName());
+                for (Assignment assignment : assignments)
+                {
+                    System.out.println(assignment.getAssignmentName());
+                    System.out.println(assignment.getScore());
+                }
+            }
+        }
 
     }
 
@@ -65,6 +93,7 @@ public class GradingApplication implements Runnable
     {
         // todo: 3 - allow the user to select a file name
         // load all student assignment scores from the file - display student statistics (low score, high score, average score)
+
 
     }
 

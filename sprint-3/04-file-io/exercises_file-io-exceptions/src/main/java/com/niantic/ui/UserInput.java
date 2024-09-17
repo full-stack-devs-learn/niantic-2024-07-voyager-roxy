@@ -30,6 +30,15 @@ public class UserInput
         return Integer.parseInt(in.nextLine());
     }
 
+    public static int fileSelection()
+    {
+        System.out.println();
+        System.out.println("-".repeat(30));
+        System.out.print("Please select a file by the student number: ");
+
+        return Integer.parseInt(in.nextLine());
+    }
+
     public static void displayMessage(String message)
     {
         System.out.println();
