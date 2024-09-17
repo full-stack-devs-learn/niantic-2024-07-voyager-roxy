@@ -52,7 +52,11 @@ public class GradingApplication implements Runnable
         // todo: 1 - get and display all student file names
         String[] fileNames = gradesService.getFileNames();
 
-        UserInput.displayFiles(fileNames);
+        String[] sortedFileNames = Arrays.stream(fileNames)
+                                            .sorted(Comparator.comparingInt(this::parseStudentNumber))
+                                            .toArray(String[]::new);
+
+        UserInput.displayFiles(sortedFileNames);
     }
 
     private void displayFileScores()
@@ -61,7 +65,11 @@ public class GradingApplication implements Runnable
         // load all student assignment scores from the file - display all files
         String[] fileNames = gradesService.getFileNames();
 
-        UserInput.displayFilesForIndividualScores(fileNames);
+        String[] sortedFileNames = Arrays.stream(fileNames)
+                .sorted(Comparator.comparingInt(this::parseStudentNumber))
+                .toArray(String[]::new);
+
+        UserInput.displayFilesForIndividualScores(sortedFileNames);
 
         int choice = UserInput.fileSelection();
         String stringNumber = String.valueOf(choice);
@@ -82,7 +90,11 @@ public class GradingApplication implements Runnable
         // load all student assignment scores from the file - display student statistics (low score, high score, average score)
         String[] fileNames = gradesService.getFileNames();
 
-        UserInput.displayFilesForIndividualScores(fileNames);
+        String[] sortedFileNames = Arrays.stream(fileNames)
+                .sorted(Comparator.comparingInt(this::parseStudentNumber))
+                .toArray(String[]::new);
+
+        UserInput.displayFilesForIndividualScores(sortedFileNames);
 
         int choice = UserInput.fileSelection();
         String stringNumber = String.valueOf(choice);

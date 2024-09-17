@@ -39,7 +39,7 @@ public class UserInput
     {
         System.out.println();
         System.out.println("-".repeat(40));
-        System.out.print("Please select a file by the student number: ");
+        System.out.print("Please select a file by student number: ");
 
         return Integer.parseInt(in.nextLine());
     }
@@ -83,7 +83,7 @@ public class UserInput
             System.out.println(assignment);
         }
         System.out.println();
-        System.out.println("Press enter to return to home selection...");
+        System.out.print("Press enter to return to home selection...");
         in.nextLine();
     }
 
@@ -105,7 +105,7 @@ public class UserInput
                 .mapToInt(Assignment::getScore)
                 .average().orElse(-1));
         System.out.println();
-        System.out.println("Press enter to return to home selection...");
+        System.out.print("Press enter to return to home selection...");
         in.nextLine();
     }
 
