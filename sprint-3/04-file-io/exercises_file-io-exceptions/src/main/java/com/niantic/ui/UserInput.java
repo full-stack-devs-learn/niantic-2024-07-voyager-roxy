@@ -96,14 +96,11 @@ public class UserInput
                 assignments.getFirst().getLastName().substring(1));
         System.out.println("-".repeat(40));
         System.out.println("Low Score: " + assignments.stream()
-                .min(Comparator.comparingInt(Assignment::getScore))
-                .map(Assignment::getScore).orElse(-1));
+                .mapToInt(Assignment::getScore).min().getAsInt());
         System.out.println("High Score: " + + assignments.stream()
-                .max(Comparator.comparingInt(Assignment::getScore))
-                .map(Assignment::getScore).orElse(-1));
+                .mapToInt(Assignment::getScore).max().getAsInt());
         System.out.println("Average Score: " + assignments.stream()
-                .mapToInt(Assignment::getScore)
-                .average().orElse(-1));
+                .mapToInt(Assignment::getScore).average().getAsDouble());
         System.out.println();
         System.out.print("Press enter to return to home selection...");
         in.nextLine();
