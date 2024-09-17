@@ -15,7 +15,7 @@ public class UserInput
     {
         System.out.println();
         System.out.println("What do you want to do?");
-        System.out.println("-".repeat(30));
+        System.out.println("-".repeat(40));
         System.out.println();
         System.out.println("  1) Display files");
         System.out.println();
@@ -38,7 +38,7 @@ public class UserInput
     public static int fileSelection()
     {
         System.out.println();
-        System.out.println("-".repeat(30));
+        System.out.println("-".repeat(40));
         System.out.print("Please select a file by the student number: ");
 
         return Integer.parseInt(in.nextLine());
@@ -48,7 +48,7 @@ public class UserInput
     {
         System.out.println();
         System.out.println("Files:");
-        System.out.println("-".repeat(30));
+        System.out.println("-".repeat(40));
         for(String fileName : fileNames)
         {
             System.out.println(fileName);
@@ -63,7 +63,7 @@ public class UserInput
     {
         System.out.println();
         System.out.println("Files:");
-        System.out.println("-".repeat(30));
+        System.out.println("-".repeat(40));
         for(String fileName : fileNames)
         {
             System.out.println(fileName);
@@ -72,28 +72,29 @@ public class UserInput
 
     public static void displayAssignment(List<Assignment> assignments)
     {
+        System.out.println("-".repeat(40));
         System.out.println("Student: " + assignments.getFirst().getFirstName().substring(0,1).toUpperCase() +
                 assignments.getFirst().getFirstName().substring(1) + " " +
                 assignments.getFirst().getLastName().substring(0,1).toUpperCase() +
                 assignments.getFirst().getLastName().substring(1));
-        System.out.println("-".repeat(30));
+        System.out.println("-".repeat(40));
         for (Assignment assignment : assignments)
         {
-            System.out.println(assignment.getAssignmentName());
-            System.out.println(assignment.getScore());
+            System.out.println(assignment);
         }
+        System.out.println();
         System.out.println("Press enter to return to home selection...");
         in.nextLine();
     }
 
     public static void displayAverages(List<Assignment> assignments)
     {
-        System.out.println("-".repeat(30));
+        System.out.println("-".repeat(40));
         System.out.println("Student: " + assignments.getFirst().getFirstName().substring(0,1).toUpperCase() +
                 assignments.getFirst().getFirstName().substring(1) + " " +
                 assignments.getFirst().getLastName().substring(0,1).toUpperCase() +
                 assignments.getFirst().getLastName().substring(1));
-        System.out.println("-".repeat(30));
+        System.out.println("-".repeat(40));
         System.out.println("Low Score: " + assignments.stream()
                 .min(Comparator.comparingInt(Assignment::getScore))
                 .map(Assignment::getScore).orElse(-1));
