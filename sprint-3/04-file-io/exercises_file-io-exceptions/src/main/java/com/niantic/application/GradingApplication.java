@@ -7,6 +7,7 @@ import com.niantic.ui.UserInput;
 
 import java.io.DataOutput;
 import java.io.File;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -80,7 +81,8 @@ public class GradingApplication implements Runnable
                 List<Assignment> assignments = gradesService.getAssignments(fileName);
                 System.out.println("Student: " + assignments.getFirst().getFirstName().substring(0,1).toUpperCase() +
                         assignments.getFirst().getFirstName().substring(1) + " " +
-                        assignments.getFirst().getLastName().substring(0,1).toUpperCase() + assignments.getFirst().getLastName().substring(1));
+                        assignments.getFirst().getLastName().substring(0,1).toUpperCase() +
+                        assignments.getFirst().getLastName().substring(1));
                 for (Assignment assignment : assignments)
                 {
                     System.out.println(assignment.getAssignmentName());
@@ -114,10 +116,17 @@ public class GradingApplication implements Runnable
                 List<Assignment> assignments = gradesService.getAssignments(fileName);
                 System.out.println("Student: " + assignments.getFirst().getFirstName().substring(0,1).toUpperCase() +
                         assignments.getFirst().getFirstName().substring(1) + " " +
-                        assignments.getFirst().getLastName().substring(0,1).toUpperCase() + assignments.getFirst().getLastName().substring(1));
-                System.out.println("Low Score: " + assignments.stream().mapToInt(Assignment::getScore).min().orElse(-1));
-                System.out.println("High Score: " + assignments.stream().mapToInt(Assignment::getScore).max().orElse(-1));
-                System.out.println("Average Score: " + assignments.stream().mapToInt(Assignment::getScore).average().orElse(-1));
+                        assignments.getFirst().getLastName().substring(0,1).toUpperCase() +
+                        assignments.getFirst().getLastName().substring(1));
+                System.out.println("Low Score: " + assignments.stream()
+                                                                .min(Comparator.comparingInt(Assignment::getScore))
+                                                                .map(Assignment::getScore).orElse(-1));
+                System.out.println("High Score: " + + assignments.stream()
+                                                                .max(Comparator.comparingInt(Assignment::getScore))
+                                                                .map(Assignment::getScore).orElse(-1));
+                System.out.println("Average Score: " + assignments.stream()
+                                                                .mapToInt(Assignment::getScore)
+                                                                .average().orElse(-1));
             }
         }
 
