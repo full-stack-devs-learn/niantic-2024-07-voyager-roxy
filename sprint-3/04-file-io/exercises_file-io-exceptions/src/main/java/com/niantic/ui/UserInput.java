@@ -20,12 +20,14 @@ public class UserInput
         System.out.println("  1) Display files");
         System.out.println();
         System.out.println("  ------------ Individual File ------------");
-        System.out.println("  2) Student: display all scores");
-        System.out.println("  3) Student: display average score");
+        System.out.println("  2) Student: Display All Scores");
+        System.out.println("  3) Student: Display Average Score");
+        System.out.println("  4) Student: Create Student Summary Report");
+        System.out.println("  5) Student: Create All Students Summary Report");
         System.out.println();
         System.out.println("  ---------- Challenge All Files ----------");
-        System.out.println("  5) All Students: display average score");
-        System.out.println("  6) All Assignments: display average score");
+        System.out.println("  6) All Students: display average score");
+        System.out.println("  7) All Assignments: display average score");
         System.out.println();
         System.out.println("  0) Exit");
 
@@ -55,8 +57,6 @@ public class UserInput
         }
 
         System.out.println();
-        System.out.print("Press enter to go back to the home screen...");
-        in.nextLine();
     }
 
     public static void displayFilesForIndividualScores(String[] fileNames)

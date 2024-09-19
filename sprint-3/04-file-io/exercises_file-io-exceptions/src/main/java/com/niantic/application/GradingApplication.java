@@ -1,8 +1,10 @@
 package com.niantic.application;
 
 import com.niantic.models.Assignment;
+import com.niantic.models.StudentStatistics;
 import com.niantic.services.GradesFileService;
 import com.niantic.services.GradesService;
+import com.niantic.services.ReportService;
 import com.niantic.ui.UserInput;
 
 import java.io.DataOutput;
@@ -15,6 +17,7 @@ import java.util.Scanner;
 public class GradingApplication implements Runnable
 {
     private GradesService gradesService = new GradesFileService();
+    private final UserInput ui = new UserInput();
 
     public void run()
     {
@@ -33,9 +36,15 @@ public class GradingApplication implements Runnable
                     displayStudentAverages();
                     break;
                 case 4:
-                    displayAllStudentStatistics();
+                    createStudentSummaryReport();
                     break;
                 case 5:
+                    createAllStudentsReport();
+                    break;
+                case 6:
+                    displayAllStudentStatistics();
+                    break;
+                case 7:
                     displayAssignmentStatistics();
                     break;
                 case 0:
@@ -120,6 +129,37 @@ public class GradingApplication implements Runnable
         // todo: 5 - Optional / Challenge - load all scores from all student and all assignments
         // display the statistics for each assignment (assignment name, low score, high score, average score)
         // this one could take some time
+    }
+
+    public void createStudentSummaryReport()
+    {
+        displayAllFiles();
+
+        int choice = UserInput.fileSelection();
+        String stringNumber = String.valueOf(choice);
+
+        var files = gradesService.getFileNames();
+
+
+        for(String fileName : files)
+        {
+            if(fileName.contains(stringNumber))
+            {
+                var studentName = parseStudentName(fileName);
+
+                List<Assignment> assignments = gradesService.getAssignments(fileName);
+                StudentStatistics statistics = new StudentStatistics(assignments, studentName);
+
+                ReportService service = new ReportService();
+
+                service.createStudentSummaryReport(statistics);
+            }
+        }
+    }
+
+    public void createAllStudentsReport()
+    {
+
     }
 
     private String parseStudentName(String fileName)
