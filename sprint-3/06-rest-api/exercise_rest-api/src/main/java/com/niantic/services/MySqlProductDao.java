@@ -179,4 +179,13 @@ public class MySqlProductDao implements ProductDao {
                                 , productId);
     }
 
+    public void deleteProduct(int productId) {
+        String sql = """
+                DELETE FROM products
+                WHERE product_id = ?
+                """;
+
+        jdbcTemplate.update(sql, productId);
+    }
+
 }
