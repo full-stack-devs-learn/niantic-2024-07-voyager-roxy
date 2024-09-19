@@ -12,6 +12,11 @@ public class StudentStatistics {
         this.studentName = studentName;
     }
 
+    public StudentStatistics(List<Assignment> assignmentList)
+    {
+        this.assignmentList = assignmentList;
+    }
+
     public String getStudentName()
     {
         return studentName;
@@ -35,7 +40,15 @@ public class StudentStatistics {
                 .mapToDouble(Assignment::getScore).average().getAsDouble();
     }
 
+    public int getTotalAssignments()
+    {
+        return assignmentList.size() / getTotalStudents();
+    }
 
-
+    public int getTotalStudents()
+    {
+        return (int) assignmentList.stream().map(student -> student.getFirstName() + " " + student.getLastName())
+                .distinct().count();
+    }
 
 }

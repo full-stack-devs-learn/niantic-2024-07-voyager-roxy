@@ -159,7 +159,13 @@ public class GradingApplication implements Runnable
 
     public void createAllStudentsReport()
     {
+        String[] fileNames = gradesService.getFileNames();
+        List<Assignment> allAssignments = gradesService.getAllAssignments(fileNames);
 
+        StudentStatistics statistics = new StudentStatistics(allAssignments);
+        ReportService service = new ReportService();
+
+        service.createAllStudentsSummaryReport(statistics);
     }
 
     private String parseStudentName(String fileName)

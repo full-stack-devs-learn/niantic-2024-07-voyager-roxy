@@ -45,12 +45,12 @@ public class ReportService {
         {
             out.println("All Assignments");
             out.println("-".repeat(50));
-            out.println("Total Students                " + statistics.getLowScore());
-            out.println("Total Assignments               " + statistics.getHighScore());
+            out.println("Total Students                " + statistics.getTotalStudents());
+            out.println("Total Assignments             " + statistics.getTotalAssignments());
             out.println("-".repeat(50));
-            out.println("Low Score            " + statistics.getAverageScore());
-            out.println("High Score            " + statistics.getAverageScore());
-            out.println("Average Score            " + statistics.getAverageScore());
+            out.println("Low Score                     " + statistics.getLowScore());
+            out.println("High Score                    " + statistics.getHighScore());
+            out.println("Average Score                 " + statistics.getAverageScore());
         }
         catch (FileNotFoundException e)
         {
