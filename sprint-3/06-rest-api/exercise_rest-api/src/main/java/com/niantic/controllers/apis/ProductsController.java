@@ -88,8 +88,16 @@ public class ProductsController {
 
     @DeleteMapping("/api/products/{productId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteProduct(@PathVariable int productId)
-    {
-        productDao.deleteProduct(productId);
+    public ResponseEntity<?> deleteProduct(@PathVariable int productId) {
+        try {
+            var currentProduct = productDao.getProductById(productId);
+            if (currentProduct == null) {
+                return ResponseEntity.notFound().build();
+            }
+            productDao.deleteProduct(productId);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }
