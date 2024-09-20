@@ -6,6 +6,7 @@ import com.niantic.services.CategoryDao;
 import com.niantic.services.MySqlCategoryDao;
 import com.niantic.services.MySqlProductDao;
 import com.niantic.services.ProductDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +15,15 @@ import java.util.List;
 
 @RestController
 public class ProductsController {
-    private ProductDao productDao = new MySqlProductDao();
-    private CategoryDao categoryDao = new MySqlCategoryDao();
+    private ProductDao productDao;
+    private CategoryDao categoryDao;
+
+    @Autowired
+    public ProductsController(ProductDao productDao, CategoryDao categoryDao)
+    {
+        this.productDao = productDao;
+        this.categoryDao = categoryDao;
+    }
 
     @GetMapping("/api/products")
     public ResponseEntity<?> getProductsByCategory(@RequestParam int catId)
