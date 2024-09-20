@@ -54,9 +54,17 @@ public class ProductsController {
 
     @PostMapping("/api/products")
     @ResponseStatus(HttpStatus.CREATED)
-    public Product addProduct(@RequestBody Product product)
+    public ResponseEntity<?> addProduct(@RequestBody Product product)
     {
-        return productDao.addProduct(product);
+        try
+        {
+            product = productDao.addProduct(product);
+            return ResponseEntity.status(HttpStatus.CREATED).body(product);
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PutMapping("/api/products/{productId}")
