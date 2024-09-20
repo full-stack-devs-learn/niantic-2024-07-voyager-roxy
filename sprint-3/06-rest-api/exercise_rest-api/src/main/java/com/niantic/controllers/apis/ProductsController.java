@@ -36,9 +36,20 @@ public class ProductsController {
     }
 
     @GetMapping("/api/products/{productId}")
-    public Product getProductById(@PathVariable int productId)
+    public ResponseEntity<?> getProductById(@PathVariable int productId)
     {
-        return productDao.getProductById(productId);
+        try{
+           var product = productDao.getProductById(productId);
+           if (product == null)
+           {
+               return ResponseEntity.notFound().build();
+           }
+           return ResponseEntity.ok(product);
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PostMapping("/api/products")
