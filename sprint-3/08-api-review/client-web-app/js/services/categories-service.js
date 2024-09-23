@@ -1,6 +1,6 @@
 class CategoryService
 {
-    baseUrl = `${config.baseUrl}/categories`;
+    baseUrl = `${config.baseUrl}/api/categories`;
 
     getAllCategories()
     {
