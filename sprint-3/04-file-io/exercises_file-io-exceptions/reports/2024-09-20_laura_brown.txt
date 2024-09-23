@@ -1,0 +1,5 @@
+laura brown
+------------------------------
+Low Score                82
+High Score               100
+Average Score            91.0

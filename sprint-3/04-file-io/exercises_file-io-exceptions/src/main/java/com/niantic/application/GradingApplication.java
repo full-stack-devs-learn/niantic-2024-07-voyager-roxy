@@ -4,6 +4,7 @@ import com.niantic.models.Assignment;
 import com.niantic.models.StudentStatistics;
 import com.niantic.services.GradesFileService;
 import com.niantic.services.GradesService;
+import com.niantic.services.LogService;
 import com.niantic.services.ReportService;
 import com.niantic.ui.UserInput;
 
@@ -18,6 +19,9 @@ public class GradingApplication implements Runnable
 {
     private GradesService gradesService = new GradesFileService();
     private final UserInput ui = new UserInput();
+
+    private final LogService errorLogger = new LogService("errors");
+    private final LogService appLogger = new LogService("application");
 
     public void run()
     {
@@ -59,6 +63,7 @@ public class GradingApplication implements Runnable
     private void displayAllFiles()
     {
         // todo: 1 - get and display all student file names
+        appLogger.logMessage("Listing all files");
         String[] fileNames = gradesService.getFileNames();
 
         String[] sortedFileNames = Arrays.stream(fileNames)
@@ -72,24 +77,34 @@ public class GradingApplication implements Runnable
     {
         // todo: 2 - allow the user to select a file name
         // load all student assignment scores from the file - display all files
-        String[] fileNames = gradesService.getFileNames();
+        try {
+            String[] fileNames = gradesService.getFileNames();
 
-        String[] sortedFileNames = Arrays.stream(fileNames)
-                .sorted(Comparator.comparingInt(this::parseStudentNumber))
-                .toArray(String[]::new);
+            String[] sortedFileNames = Arrays.stream(fileNames)
+                    .sorted(Comparator.comparingInt(this::parseStudentNumber))
+                    .toArray(String[]::new);
 
-        UserInput.displayFilesForIndividualScores(sortedFileNames);
+            UserInput.displayFilesForIndividualScores(sortedFileNames);
 
-        int choice = UserInput.fileSelection();
-        String stringNumber = String.valueOf(choice);
+            int choice = UserInput.fileSelection();
+            String stringNumber = String.valueOf(choice);
+            boolean fileFound = false;
 
-        for(String fileName : fileNames)
-        {
-            if(fileName.contains(stringNumber))
-            {
-                List<Assignment> assignments = gradesService.getAssignments(fileName);
-                UserInput.displayAssignment(assignments);
+            for (String fileName : fileNames) {
+                if (fileName.contains(stringNumber)) {
+                    fileFound = true;
+                    appLogger.logMessage("Displaying " + fileName);
+                    List<Assignment> assignments = gradesService.getAssignments(fileName);
+                    UserInput.displayAssignment(assignments);
+                }
             }
+            if(!fileFound)
+            {
+                errorLogger.logMessage("Invalid file selection: No matching file found.");
+            }
+        } catch (Exception e)
+        {
+            errorLogger.logMessage(e.getMessage());
         }
     }
 
@@ -97,24 +112,34 @@ public class GradingApplication implements Runnable
     {
         // todo: 3 - allow the user to select a file name
         // load all student assignment scores from the file - display student statistics (low score, high score, average score)
-        String[] fileNames = gradesService.getFileNames();
+        try {
+            String[] fileNames = gradesService.getFileNames();
 
-        String[] sortedFileNames = Arrays.stream(fileNames)
-                .sorted(Comparator.comparingInt(this::parseStudentNumber))
-                .toArray(String[]::new);
+            String[] sortedFileNames = Arrays.stream(fileNames)
+                    .sorted(Comparator.comparingInt(this::parseStudentNumber))
+                    .toArray(String[]::new);
 
-        UserInput.displayFilesForIndividualScores(sortedFileNames);
+            UserInput.displayFilesForIndividualScores(sortedFileNames);
 
-        int choice = UserInput.fileSelection();
-        String stringNumber = String.valueOf(choice);
+            int choice = UserInput.fileSelection();
+            String stringNumber = String.valueOf(choice);
+            boolean fileFound = false;
 
-        for(String fileName : fileNames)
-        {
-            if(fileName.contains(stringNumber))
-            {
-                List<Assignment> assignments = gradesService.getAssignments(fileName);
-                UserInput.displayAverages(assignments);
+            for (String fileName : fileNames) {
+                if (fileName.contains(stringNumber)) {
+                    fileFound = true;
+                    appLogger.logMessage("Displaying " + fileName);
+                    List<Assignment> assignments = gradesService.getAssignments(fileName);
+                    UserInput.displayAverages(assignments);
+                }
             }
+            if(!fileFound)
+            {
+                errorLogger.logMessage("Invalid file selection: No matching file found.");
+            }
+        } catch (Exception e)
+        {
+            errorLogger.logMessage(e.getMessage());
         }
     }
 
@@ -135,25 +160,35 @@ public class GradingApplication implements Runnable
     {
         displayAllFiles();
 
-        int choice = UserInput.fileSelection();
-        String stringNumber = String.valueOf(choice);
+        try {
+            int choice = UserInput.fileSelection();
+            String stringNumber = String.valueOf(choice);
+            boolean fileFound = false;
 
-        var files = gradesService.getFileNames();
+            var files = gradesService.getFileNames();
 
 
-        for(String fileName : files)
-        {
-            if(fileName.contains(stringNumber))
-            {
-                var studentName = parseStudentName(fileName);
+            for (String fileName : files) {
+                if (fileName.contains(stringNumber)) {
+                    var studentName = parseStudentName(fileName);
 
-                List<Assignment> assignments = gradesService.getAssignments(fileName);
-                StudentStatistics statistics = new StudentStatistics(assignments, studentName);
+                    appLogger.logMessage("Create student summary report for " + studentName);
 
-                ReportService service = new ReportService();
+                    List<Assignment> assignments = gradesService.getAssignments(fileName);
+                    StudentStatistics statistics = new StudentStatistics(assignments, studentName);
 
-                service.createStudentSummaryReport(statistics);
+                    ReportService service = new ReportService();
+
+                    service.createStudentSummaryReport(statistics);
+                }
             }
+            if(!fileFound)
+            {
+                errorLogger.logMessage("Invalid file selection: No matching file found.");
+            }
+        } catch (Exception e)
+        {
+            errorLogger.logMessage(e.getMessage());
         }
     }
 
