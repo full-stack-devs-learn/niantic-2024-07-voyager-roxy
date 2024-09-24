@@ -1,5 +1,6 @@
 // code here is the logic to manage the home (or people) page
 let peopleService;
+let currentPage = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
     peopleService = new PeopleService();
@@ -13,4 +14,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // can you add previous and next buttons to the page
     // to navigate between pages?
+    loadPeople();
+
+
+    document.getElementById('previous').addEventListener('click', () => 
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                loadPeople();
+            }
+        });
+    
+        document.getElementById('next').addEventListener('click', () => 
+            {
+                    currentPage++;
+                    loadPeople();
+            });
+
 })
+
+async function loadPeople()
+{
+    try
+    {
+        const people = await peopleService.getPeople(currentPage);
+
+        const peopleContainer = document.getElementById('people-container');
+        peopleContainer.innerHTML = '';
+
+        people.forEach(person => {
+            const li = document.createElement('li');
+            li.textContent = person.name;
+            peopleContainer.appendChild(li);
+        });
+    }
+    catch (error)
+    {
+        return error;
+    }
+}
