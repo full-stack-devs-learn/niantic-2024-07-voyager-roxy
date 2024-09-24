@@ -12,7 +12,7 @@ class PeopleService
     {
         try
         {
-            const response = await axios.get(`${this.baseUrl}?page=${page}`)
+            const response = await axios.get(`${this.baseUrl}?page=${page}&limit=10`)
 
             return response.data.results;
         }
