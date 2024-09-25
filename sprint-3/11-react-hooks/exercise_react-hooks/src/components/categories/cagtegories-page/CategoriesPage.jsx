@@ -10,9 +10,9 @@ export default function CategoriesPage()
     return (
         <div className='container'>
             <header className="mt-4">
-                <h1>Categories</h1>
+                <h1 class="container mt-4">Categories</h1>
             </header>
-            <button className="btn btn-danger" onClick={()=> setAction("add")}>Add</button>
+            <button className="btn btn-danger ms-3" onClick={()=> setAction("add")}>Add</button>
 
             {action === "list" && <CategoryCardContainer></CategoryCardContainer>}
             {action === "add" && <CategoryAdd onCancel={()=>setAction("list")}

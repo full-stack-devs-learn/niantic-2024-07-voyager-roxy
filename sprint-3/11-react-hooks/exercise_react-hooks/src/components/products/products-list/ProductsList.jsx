@@ -6,8 +6,8 @@ export default function ProductsList({categoryId})
     return (
         <>
         {(categoryId == 0) 
-        ? <div>No Category Selected</div>
-        : <h3>
+        ? <div class="container mt-4">No Category Selected</div>
+        : <h3 class="container mt-4">
                 Products for category: {categoryId}
           </h3>
         }

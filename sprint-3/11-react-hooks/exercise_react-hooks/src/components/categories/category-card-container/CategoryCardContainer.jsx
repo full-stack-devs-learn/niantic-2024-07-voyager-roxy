@@ -43,7 +43,7 @@ export default function CategoryCardContainer()
 
     return(
         <>
-        <h5 className="container">Selected Category: {selectedCategory}</h5>
+        <h5 className="container mt-4">Selected Category: {selectedCategory}</h5>
         <main className="container mt-4 categories-container" id="categories-container">
         {
             categories.map((category) => (
