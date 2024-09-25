@@ -108,7 +108,7 @@ public class ProductsController {
         }
     }
 
-    @DeleteMapping("/api/products/{productId}")
+    @DeleteMapping("/products/{productId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<?> deleteProduct(@PathVariable int productId) {
         try {
