@@ -26,6 +26,48 @@ public class MySqlProductDao implements ProductDao {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    public List<Product> getProducts()
+    {
+        List<Product> products = new ArrayList<>();
+
+        String sql = """
+        SELECT product_id
+               , product_name
+               , supplier_id
+               , category_id
+               , quantity_per_unit
+               , unit_price
+               , units_in_stock
+               , units_on_order
+               , reorder_level
+               , discontinued
+        FROM products
+        """;
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql);
+
+        while(row.next())
+        {
+            int productId = row.getInt("product_id");
+            String productName = row.getString("product_name");
+            int supplier_id = row.getInt("supplier_id");
+            int category_id = row.getInt("category_id");
+            String quantityPerUnit = row.getString("quantity_per_unit");
+            double unitPrice = row.getDouble("unit_price");
+            int unitsInStock = row.getInt("units_in_stock");
+            int unitsOnOrder = row.getInt("units_on_order");
+            int reorderLevel = row.getInt("reorder_level");
+            boolean discontinued = row.getBoolean("discontinued");
+
+            Product product = new Product(productId, productName, supplier_id, category_id, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel, discontinued);
+
+            products.add(product);
+        }
+
+        return products;
+
+    }
+
     public List<Product> getProductsByCategory(int categoryId)
     {
         List<Product> products = new ArrayList<>();

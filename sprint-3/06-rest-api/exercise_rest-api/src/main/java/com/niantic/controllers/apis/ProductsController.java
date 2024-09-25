@@ -26,6 +26,19 @@ public class ProductsController {
         this.categoryDao = categoryDao;
     }
 
+    @GetMapping("/products")
+    public ResponseEntity<?> getProducts()
+    {
+        try {
+            var products = productDao.getProducts();
+            return ResponseEntity.ok(products);
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @GetMapping("/api/products")
     public ResponseEntity<?> getProductsByCategory(@RequestParam int catId)
     {
