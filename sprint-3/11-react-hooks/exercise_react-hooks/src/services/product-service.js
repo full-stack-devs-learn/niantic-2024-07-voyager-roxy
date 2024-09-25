@@ -9,6 +9,11 @@ class ProductService
         const response = await axios.get(this.baseUrl);
         return response.data;
     }
+
+    async delete(productId)
+    {
+        await axios.delete(`${this.baseUrl}/${productId}`)
+    }
 }
 
 const productService = new ProductService()

@@ -14,12 +14,19 @@ export default function ProductCardContainer() {
     },
         [])
 
+        const productDeleted = (productId) => {
+            const newList = products.filter(product => product.productId !== productId);
+            setProducts(newList);
+        }
+
     return (
         <>
             <main className="container mt-4 product-container" id="product-container">
                 {products.map((product) => (
                     <ProductCard key={product.productId}
-                        product={product.productName}></ProductCard>
+                        id={product.productId}
+                        product={product.productName}
+                        onProductDeleted={productDeleted}></ProductCard>
                 ))
 
                 }
