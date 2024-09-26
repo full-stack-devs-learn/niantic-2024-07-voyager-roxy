@@ -6,8 +6,8 @@ public class Product
 {
     private int productId;
     private String productName;
-    private int supplierId;
-    private int categoryId;
+    private Integer supplierId;
+    private Integer categoryId;
     private String quantityPerUnit;
     private double unitPrice;
     private int unitsInStock;
@@ -15,7 +15,7 @@ public class Product
     private int reorderLevel;
     private boolean discontinued;
 
-    public Product(int productId, String productName, int supplierId, int categoryId, String quantityPerUnit, double unitPrice, int unitsInStock, int unitsOnOrder, int reorderLevel, boolean discontinued) {
+    public Product(int productId, String productName, Integer supplierId, Integer categoryId, String quantityPerUnit, double unitPrice, int unitsInStock, int unitsOnOrder, int reorderLevel, boolean discontinued) {
         this.productId = productId;
         this.productName = productName;
         this.supplierId = supplierId;
@@ -49,19 +49,19 @@ public class Product
         this.productName = productName;
     }
 
-    public int getSupplierId() {
+    public Integer getSupplierId() {
         return supplierId;
     }
 
-    public void setSupplierId(int supplierId) {
+    public void setSupplierId(Integer supplierId) {
         this.supplierId = supplierId;
     }
 
-    public int getCategoryId() {
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +51,8 @@ public class MySqlProductDao implements ProductDao {
         {
             int productId = row.getInt("product_id");
             String productName = row.getString("product_name");
-            int supplier_id = row.getInt("supplier_id");
-            int category_id = row.getInt("category_id");
+            Integer supplier_id = (Integer) row.getObject("supplier_id");
+            Integer category_id = (Integer) row.getObject("category_id");
             String quantityPerUnit = row.getString("quantity_per_unit");
             double unitPrice = row.getDouble("unit_price");
             int unitsInStock = row.getInt("units_in_stock");
@@ -93,8 +94,8 @@ public class MySqlProductDao implements ProductDao {
         {
             int productId = row.getInt("product_id");
             String productName = row.getString("product_name");
-            int supplier_id = row.getInt("supplier_id");
-            int category_id = row.getInt("category_id");
+            Integer supplier_id = (Integer) row.getObject("supplier_id");
+            Integer category_id = (Integer) row.getObject("category_id");
             String quantityPerUnit = row.getString("quantity_per_unit");
             double unitPrice = row.getDouble("unit_price");
             int unitsInStock = row.getInt("units_in_stock");
@@ -136,8 +137,8 @@ public class MySqlProductDao implements ProductDao {
         {
             productId = row.getInt("product_id");
             String productName = row.getString("product_name");
-            int supplier_id = row.getInt("supplier_id");
-            int category_id = row.getInt("category_id");
+            Integer supplier_id = (Integer) row.getObject("supplier_id");
+            Integer category_id = (Integer) row.getObject("category_id");
             String quantityPerUnit = row.getString("quantity_per_unit");
             double unitPrice = row.getDouble("unit_price");
             int unitsInStock = row.getInt("units_in_stock");
@@ -156,8 +157,16 @@ public class MySqlProductDao implements ProductDao {
     public Product addProduct(Product product) {
         String sql = """
                 INSERT INTO products
-                       (product_name)
-                VALUES (?)
+                       (product_name
+                       , supplier_id
+                       , category_id
+                       , quantity_per_unit
+                       , unit_price
+                       , units_in_stock
+                       , units_on_order
+                       , reorder_level
+                       , discontinued)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -165,6 +174,26 @@ public class MySqlProductDao implements ProductDao {
         jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, product.getProductName());
+            if(product.getSupplierId()!=null)
+            {
+                statement.setInt(2, product.getSupplierId());
+            }
+            else {
+                statement.setNull(2, Types.INTEGER);
+            }
+            if(product.getCategoryId()!=null)
+            {
+                statement.setInt(3, product.getCategoryId());
+            }
+            else {
+                statement.setNull(3, Types.INTEGER);
+            }
+            statement.setString(4, product.getQuantityPerUnit());
+            statement.setDouble(5, product.getUnitPrice());
+            statement.setInt(6, product.getUnitsInStock());
+            statement.setInt(7, product.getUnitsOnOrder());
+            statement.setInt(8, product.getReorderLevel());
+            statement.setBoolean(9, product.isDiscontinued());
             return statement;
         }, keyHolder);
 
