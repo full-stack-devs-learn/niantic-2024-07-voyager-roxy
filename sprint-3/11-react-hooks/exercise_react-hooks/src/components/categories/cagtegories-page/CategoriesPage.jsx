@@ -8,9 +8,9 @@ export default function CategoriesPage()
     const [action, setAction] = useState("list");
 
     return (
-        <div className='container'>
+        <div className="container">
             <header className="mt-4">
-                <h1 class="container mt-4">Categories</h1>
+                <h1 className="container mt-4">Categories</h1>
             </header>
             <button className="btn btn-danger ms-3" onClick={()=> setAction("add")}>Add</button>
 

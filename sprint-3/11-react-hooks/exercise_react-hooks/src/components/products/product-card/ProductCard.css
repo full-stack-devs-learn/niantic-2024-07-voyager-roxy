@@ -31,3 +31,10 @@
 #delete:hover {
     cursor: pointer;
 }
+
+.product-card {
+    cursor: pointer;
+}
+.product-card:hover {
+    background-color: antiquewhite;
+}
