@@ -156,16 +156,8 @@ public class MySqlProductDao implements ProductDao {
     public Product addProduct(Product product) {
         String sql = """
                 INSERT INTO products
-                       (product_name
-                       , supplier_id
-                       , category_id
-                       , quantity_per_unit
-                       , unit_price
-                       , units_in_stock
-                       , units_on_order
-                       , reorder_level
-                       , discontinued)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                       (product_name)
+                VALUES (?)
                 """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -173,14 +165,6 @@ public class MySqlProductDao implements ProductDao {
         jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, product.getProductName());
-            statement.setInt(2, product.getSupplierId());
-            statement.setInt(3, product.getCategoryId());
-            statement.setString(4, product.getQuantityPerUnit());
-            statement.setDouble(5, product.getUnitPrice());
-            statement.setInt(6, product.getUnitsInStock());
-            statement.setInt(7, product.getUnitsOnOrder());
-            statement.setInt(8, product.getReorderLevel());
-            statement.setBoolean(9, product.isDiscontinued());
             return statement;
         }, keyHolder);
 

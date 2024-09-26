@@ -74,7 +74,7 @@ public class ProductsController {
         }
     }
 
-    @PostMapping("/api/products")
+    @PostMapping("/products")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> addProduct(@RequestBody Product product)
     {
