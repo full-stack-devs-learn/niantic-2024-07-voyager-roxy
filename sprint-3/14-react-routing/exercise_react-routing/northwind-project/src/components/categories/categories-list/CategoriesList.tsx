@@ -1,4 +1,4 @@
 export default function CategoriesList()
 {
-    return(<h1>Categories</h1>)
+    return(<h1>Categories List</h1>)
 }
