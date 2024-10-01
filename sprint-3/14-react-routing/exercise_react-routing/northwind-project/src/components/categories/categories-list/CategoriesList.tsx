@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Category } from "../../../models/category"
 import categoryService from "../../../services/category-service"
+import { Link } from "react-router-dom"
 // import { Link } from "react-router-dom"
 
 export default function CategoriesList()
@@ -26,6 +27,8 @@ export default function CategoriesList()
             <li>{category.categoryName}</li>
         ))}
     </ul>
+
+    <Link className="btn btn-outline-primary m-3" to='/categories/add'>Add</Link>
     
     </>)
 }

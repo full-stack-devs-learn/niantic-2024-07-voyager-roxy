@@ -16,6 +16,12 @@ class CategoryService
         const response = await axios.get<Category>(`${this.baseUrl}/${id}`)
         return response.data;
     }
+
+    async addCategory(category: Category): Promise<Category>
+    {
+        const response = await axios.post<Category>(this.baseUrl, category)
+        return response.data
+    }
 }
 
 const categoryService = new CategoryService()
