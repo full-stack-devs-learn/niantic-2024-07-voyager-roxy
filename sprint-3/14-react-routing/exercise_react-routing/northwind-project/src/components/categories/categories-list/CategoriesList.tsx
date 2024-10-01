@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { Category } from "../../../models/category"
 import categoryService from "../../../services/category-service"
 import { Link } from "react-router-dom"
-// import { Link } from "react-router-dom"
 
 export default function CategoriesList()
 {
@@ -25,7 +24,7 @@ export default function CategoriesList()
     <ul>
         {categories.map((category: Category) => (
             <>
-            <li>{category.categoryName}</li>
+            <li><Link to={`/categories/${category.categoryId}`}>{category.categoryName}</Link></li>
             </>
         ))}
     </ul>
