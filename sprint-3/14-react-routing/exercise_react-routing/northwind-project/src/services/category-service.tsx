@@ -22,6 +22,12 @@ class CategoryService
         const response = await axios.post<Category>(this.baseUrl, category)
         return response.data
     }
+
+    async editCategory(category: Category): Promise<void>
+    {
+        const url = `${this.baseUrl}/${category.categoryId}`
+        await axios.put<void>(url, category)
+    }
 }
 
 const categoryService = new CategoryService()

@@ -24,7 +24,9 @@ export default function CategoriesList()
     <h3>Categories List</h3>
     <ul>
         {categories.map((category: Category) => (
+            <>
             <li>{category.categoryName}</li>
+            </>
         ))}
     </ul>
 
