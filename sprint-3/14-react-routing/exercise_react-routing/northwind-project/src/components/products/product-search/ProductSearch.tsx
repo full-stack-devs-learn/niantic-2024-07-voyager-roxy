@@ -1,4 +1,7 @@
-import { useLocation } from "react-router-dom"
+import { Link, useLocation} from "react-router-dom"
+import { useState, useEffect } from "react"
+import { Product } from "../../../models/product"
+import productService from "../../../services/product-service"
 
 export default function ProductSearch()
 {
@@ -9,11 +12,36 @@ export default function ProductSearch()
     const minPrice = queryParams.get("minPrice")
     const maxPrice = queryParams.get("maxPrice")
 
-    return (<><h1>Product Search</h1>
-        <h2>Category Id: {categoryId} </h2>
-        <h2>Name: {name} </h2>
-        <h2>Min Price: {minPrice} </h2>
-        <h2>Max Price: {maxPrice} </h2>
+    const [products, setProducts] = useState<Product[]>([])
+
+    useEffect(() => { loadProducts() }, [])
+
+    async function loadProducts() {
+        try{
+            const products = await productService.getProducts();
+            setProducts(products)
+        } catch (error)
+        {
+            console.log(error);
+        }
+    }
+
+    return (<><h3>Product Search</h3>
+        <h4>Category Id: {categoryId} </h4>
+        <h4>Name: {name} </h4>
+        <h4>Min Price: {minPrice} </h4>
+        <h4>Max Price: {maxPrice} </h4>
+
+        <h3>Products List</h3>
+        <ul>
+            {products.map((product: Product) => (
+                <>
+                    <li><Link to={`/products/${product.productId}`}>{product.productName}</Link></li>
+                </>
+            ))}
+        </ul>
+
+        <Link className="btn btn-outline-primary m-3" to='/products/add'>Add</Link>
         </>
     )
 }
