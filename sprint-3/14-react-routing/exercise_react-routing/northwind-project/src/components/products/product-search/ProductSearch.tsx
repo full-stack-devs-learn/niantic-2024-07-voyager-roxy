@@ -7,7 +7,7 @@ export default function ProductSearch()
 {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
-    const categoryId = queryParams.get("catId") ?? 1
+    const categoryId = queryParams.get("catId")
     const name = queryParams.get("name")
     const minPrice = queryParams.get("minPrice")
     const maxPrice = queryParams.get("maxPrice")
@@ -26,13 +26,13 @@ export default function ProductSearch()
         }
     }
 
-    return (<><h3>Product Search</h3>
+    return (<><h2>Product Search</h2>
         <h4>Category Id: {categoryId} </h4>
         <h4>Name: {name} </h4>
         <h4>Min Price: {minPrice} </h4>
         <h4>Max Price: {maxPrice} </h4>
 
-        <h3>Products List</h3>
+        <h2>Products List</h2>
         <ul>
             {products.map((product: Product) => (
                 <>
