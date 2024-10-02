@@ -20,7 +20,7 @@ export default function CategoriesList()
         
     }
     return(<>
-    <h3>Categories List</h3>
+    <h2>Categories List</h2>
     <ul>
         {categories.map((category: Category) => (
             <>

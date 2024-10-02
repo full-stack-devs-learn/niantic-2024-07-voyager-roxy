@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { Product } from "../../../models/product"
 import productService from "../../../services/product-service";
 
@@ -26,5 +26,6 @@ export default function ProductDetails()
     <p>Reorder Level: {product?.reorderLevel}</p>
     <p>Units In Stock: {product?.unitsInStock}</p>
     <p>Units On Order: {product?.unitsOnOrder}</p>
+    <Link className="btn btn-outline-dark mt-3" to={`/products/${productId}/edit`}>Edit</Link>
     </>)
 }
