@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { Category } from "../../../models/category"
 import categoryService from "../../../services/category-service";
 
@@ -21,5 +21,6 @@ export default function CategoryDetails()
     <h3>Category Details</h3>
     <p>{category?.categoryName}</p>
     <p>{category?.description}</p>
+    <Link className="btn btn-outline-dark mt-3" to={`/categories/${categoryId}/edit`}>Edit</Link>
     </>)
 }

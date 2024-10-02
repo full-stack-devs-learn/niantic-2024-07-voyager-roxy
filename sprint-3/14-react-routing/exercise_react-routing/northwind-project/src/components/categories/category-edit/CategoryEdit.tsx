@@ -35,7 +35,7 @@ export default function CategoryEdit() {
 
         await categoryService.editCategory(editedCategory)
 
-        navigate('/categories')
+        navigate(`/categories/${id}`)
     }
         return (<>
             <div className="container">
